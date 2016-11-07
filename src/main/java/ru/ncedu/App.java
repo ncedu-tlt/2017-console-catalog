@@ -1,13 +1,14 @@
 package ru.ncedu;
 
-/**
- * Hello world!
- *
- */
+import ru.ncedu.menu.ConsoleMenu;
+import ru.ncedu.menu.commands.MainMenuCommand;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ConsoleMenu menu = new ConsoleMenu(MainMenuCommand.getInstance());
+        
+        menu.run();
     }
 }
