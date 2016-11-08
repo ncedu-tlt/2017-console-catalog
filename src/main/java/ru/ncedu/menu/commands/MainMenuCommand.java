@@ -31,7 +31,7 @@ public class MainMenuCommand implements Command {
                 return MainMenuCommand.getInstance();
             default:
                 System.out.println( "Unexpected command!" );
-                return new MainMenuCommand();
+                return MainMenuCommand.getInstance();
         }
     }
     
