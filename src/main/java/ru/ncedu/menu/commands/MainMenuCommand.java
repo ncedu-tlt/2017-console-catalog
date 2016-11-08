@@ -1,5 +1,8 @@
 package ru.ncedu.menu.commands;
 
+import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
+import ru.ncedu.menu.utils.MenuUtils;
+
 import java.util.Scanner;
 
 public class MainMenuCommand implements Command {
@@ -9,37 +12,41 @@ public class MainMenuCommand implements Command {
     private MainMenuCommand() {   
     }
 
+    public static synchronized MainMenuCommand getInstance() {
+        if (instance == null) {
+            instance = new MainMenuCommand();
+        }
+        return instance;
+    }
+
+    @Override
     public Command execute() {
-        System.out.println( "------------" );
-        System.out.println( "1 - Add new category" );
-        System.out.println( "9 - Main menu" );
-        System.out.println( "0 - Exit" );
-        System.out.println( "------------" );
-                
+
+        MenuUtils.printSeparator();
+        MenuUtils.printOption("1", "Categories");
+        MenuUtils.printOption("8", "Save changes");
+        MenuUtils.printOption("9", "Discard changes");
+        MenuUtils.printOption("0", "Exit");
+        MenuUtils.printSeparator();
+        MenuUtils.printPrompt();
+
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.print( "Enter command: " );
-        
         int choice = scanner.nextInt();
-        
+
         switch (choice) {
             case 0:
                 return ExitCommand.getInstance();
             case 1:
-                return new AddCategoryCommand();
+                return CategoriesMenuCommand.getInstance();
+            case 8:
+                return SaveCommand.getInstance();
             case 9:
-                return MainMenuCommand.getInstance();
+                return LoadCommand.getInstance();
             default:
-                System.out.println( "Unexpected command!" );
-                return MainMenuCommand.getInstance();
+                System.out.println("Unexpected command!");
+                return this;
         }
     }
-    
-    public static synchronized MainMenuCommand getInstance() {
-        if (instance == null) {
-                instance = new MainMenuCommand();
-        }
-        return instance;
-    }
+
     
 }
