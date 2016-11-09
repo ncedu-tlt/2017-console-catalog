@@ -27,11 +27,13 @@ public class AddCategoryCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         MenuUtils.printSeparator();
-        System.out.print("Enter new category name: ");
-        String categoryName = scanner.next();
+        System.out.println("Enter new category name:");
+        MenuUtils.printPrompt();
 
+        String categoryName = scanner.next();
         String errorMessage = validate(categoryName);
         if (errorMessage != null) {
+            MenuUtils.printSeparator();
             System.out.println(validate(categoryName));
             return this;
         }

@@ -59,9 +59,11 @@ public class SelectCategoryCommand implements Command {
                 return selectionHandler;
             }
 
+            MenuUtils.printSeparator();
             System.out.println("No category with such ID have been found!");
 
         } catch (NumberFormatException e) {
+            MenuUtils.printSeparator();
             System.out.println("Category ID should be a number!");
         }
 
