@@ -43,11 +43,16 @@ public class SelectCategoryCommand implements Command {
             MenuUtils.printOption(String.valueOf(category.getId()), category.getName());
         }
 
+        MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
 
         Scanner scanner = new Scanner(System.in);
         String categoryId = scanner.next();
+
+        if (categoryId.equals("0")) {
+            return CategoriesMenuCommand.getInstance();
+        }
 
         try {
 

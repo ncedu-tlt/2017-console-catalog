@@ -23,9 +23,10 @@ public class CategoriesMenuCommand implements Command {
     public Command execute() {
 
         MenuUtils.printSeparator();
-        MenuUtils.printOption("1", "Add category");
-        MenuUtils.printOption("2", "Edit category");
-        MenuUtils.printOption("3", "Delete category");
+        MenuUtils.printOption("1", "View categories");
+        MenuUtils.printOption("2", "Add category");
+        MenuUtils.printOption("3", "Edit category");
+        MenuUtils.printOption("4", "Delete category");
         MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
@@ -37,10 +38,12 @@ public class CategoriesMenuCommand implements Command {
             case 0:
                 return MainMenuCommand.getInstance();
             case 1:
-                return AddCategoryCommand.getInstance();
+                return ViewCategoriesCommand.getInstance();
             case 2:
-                return new SelectCategoryCommand(new EditCategoryCommand());
+                return AddCategoryCommand.getInstance();
             case 3:
+                return new SelectCategoryCommand(new EditCategoryCommand());
+            case 4:
                 return new SelectCategoryCommand(new DeleteCategoryCommand());
             default:
                 System.out.println("Unexpected command!");

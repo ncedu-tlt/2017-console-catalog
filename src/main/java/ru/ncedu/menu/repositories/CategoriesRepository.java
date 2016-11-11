@@ -16,13 +16,12 @@ public class CategoriesRepository implements Repository<Category> {
 
     private List<Category> categories;
 
-    private CategoriesRepository() {
-        load();
-    }
+    private CategoriesRepository() {}
 
     public static synchronized CategoriesRepository getInstance() {
         if (instance == null) {
             instance = new CategoriesRepository();
+            instance.load();
         }
         return instance;
     }
