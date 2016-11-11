@@ -8,6 +8,7 @@ public class ExitCommand implements Command {
     private static ExitCommand instance;
 
     public Command execute() {
+        // Exit
         return null;
     }
     
