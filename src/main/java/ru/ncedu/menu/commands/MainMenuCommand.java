@@ -1,6 +1,7 @@
 package ru.ncedu.menu.commands;
 
 import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
+import ru.ncedu.menu.commands.products.ProductsMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
 
 import java.util.Scanner;
@@ -39,6 +40,8 @@ public class MainMenuCommand implements Command {
                 return ExitCommand.getInstance();
             case 1:
                 return CategoriesMenuCommand.getInstance();
+            case 2:
+                return ProductsMenuCommand.getInstance();
             case 8:
                 return SaveCommand.getInstance();
             case 9:
