@@ -1,5 +1,6 @@
 package ru.ncedu.menu.commands;
 
+import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupMenuCommand;
 import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
 
@@ -24,6 +25,7 @@ public class MainMenuCommand implements Command {
 
         MenuUtils.printSeparator();
         MenuUtils.printOption("1", "Categories");
+        MenuUtils.printOption("2", "Characteristic groups");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
         MenuUtils.printOption("0", "Exit");
@@ -38,6 +40,8 @@ public class MainMenuCommand implements Command {
                 return ExitCommand.getInstance();
             case 1:
                 return CategoriesMenuCommand.getInstance();
+            case 2:
+                return CharacteristicGroupMenuCommand.getInstance();
             case 8:
                 return SaveCommand.getInstance();
             case 9:
