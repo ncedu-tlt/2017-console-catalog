@@ -37,6 +37,8 @@ public class ProductsMenuCommand implements Command {
                 return MainMenuCommand.getInstance();
             case 1:
                 return ViewProductsCommand.getInstance();
+            case 3:
+                return AddProductCommand.getInstance();
             default:
                 System.out.println("Unexpected command!");
                 return this;

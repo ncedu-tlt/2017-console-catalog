@@ -8,6 +8,8 @@ public class Product implements Serializable {
     private long categoryId;
     private String description;
 
+    public Product() {}
+
     public Product(long id) {
         this.id = id;
     }

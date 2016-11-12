@@ -1,6 +1,7 @@
 package ru.ncedu.menu.commands;
 
 import ru.ncedu.menu.repositories.CategoriesRepository;
+import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
 public class SaveCommand implements Command {
@@ -21,6 +22,7 @@ public class SaveCommand implements Command {
     public Command execute() {
 
         CategoriesRepository.getInstance().save();
+        ProductsRepository.getInstance().save();
 
         MenuUtils.printSeparator();
         System.out.println("All changes have been saved");

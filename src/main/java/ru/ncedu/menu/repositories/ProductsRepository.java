@@ -114,7 +114,7 @@ public class ProductsRepository implements Repository<Product> {
     @Override
     public void load() {
         try {
-            JSONUtils.readListFromFile(FILE_NAME, Product.class);
+           products = JSONUtils.readListFromFile(FILE_NAME, Product.class);
         } catch (IOException e) {
             products = new ArrayList<>();
             e.printStackTrace();
