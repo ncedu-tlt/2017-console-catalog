@@ -3,10 +3,18 @@ package ru.ncedu.menu.commands.categories;
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.MainMenuCommand;
 import ru.ncedu.menu.models.Category;
+import ru.ncedu.menu.models.Product;
 import ru.ncedu.menu.repositories.CategoriesRepository;
+import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
+
+    List<Product> products = ProductsRepository.getInstance().get();
 
     public DeleteCategoryCommand() {
     }
@@ -18,11 +26,47 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
     @Override
     public Command execute() {
 
+        List<Product> productsToRemove = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        if (inspectionProductCategory() != null){
+            System.out.println(inspectionProductCategory());
+            System.out.println("Enter 'D' for delete category and" +
+                    " products, and any key for return to menu.");
+            if (!(scanner.next().equalsIgnoreCase("d"))){
+                return MainMenuCommand.getInstance();
+            }
+        }
+
+        for (Product product : products){
+            if (product.getCategoryId() == category.getId()){
+                productsToRemove.add(product);
+            }
+        }
+        ProductsRepository.getInstance().remove(productsToRemove);
         CategoriesRepository.getInstance().remove(category);
+
 
         MenuUtils.printSeparator();
         System.out.println("Category '" + category.getName() + "' have been deleted");
 
         return MainMenuCommand.getInstance();
+    }
+
+    private String inspectionProductCategory() {
+
+        int productCount = 0;
+
+        for (Product product : products) {
+            if (product.getCategoryId() == category.getId()) {
+                productCount++;
+            }
+        }
+
+        return productCount > 0 ? "Category is contains " + productCount +
+                " product(s).  All products is contained in this category" +
+                " will been deleted. Delete this category?" : null;
     }
 }

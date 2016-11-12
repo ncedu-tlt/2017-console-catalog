@@ -46,6 +46,7 @@ public class EditCategoryCommand extends CategorySelectionHandlerCommand {
 
     /**
      * Validates category name and returns a message if error was found
+     *
      * @return Error message
      */
     private String validate(String name) {

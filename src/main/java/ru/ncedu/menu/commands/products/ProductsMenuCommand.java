@@ -2,6 +2,8 @@ package ru.ncedu.menu.commands.products;
 
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.MainMenuCommand;
+import ru.ncedu.menu.commands.categories.EditCategoryCommand;
+import ru.ncedu.menu.commands.categories.SelectCategoryCommand;
 import ru.ncedu.menu.utils.MenuUtils;
 
 import java.util.Scanner;
@@ -41,6 +43,10 @@ public class ProductsMenuCommand implements Command {
                 return SearchProductCommand.getInstance();
             case 3:
                 return AddProductCommand.getInstance();
+            case 4:
+                return new SelectProductCommand(new EditProductCommand());
+            case 5:
+                return new SelectProductCommand(new DeleteProductCommand());
             default:
                 System.out.println("Unexpected command!");
                 return this;
