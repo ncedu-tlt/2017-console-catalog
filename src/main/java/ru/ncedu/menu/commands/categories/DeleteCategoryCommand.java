@@ -34,7 +34,7 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
         if (inspectionProductCategory() != null){
             System.out.println(inspectionProductCategory());
             System.out.println("Enter 'D' for delete category and" +
-                    "products, and any key for return to menu.");
+                    " products, and any key for return to menu.");
             if (!(scanner.next().equalsIgnoreCase("d"))){
                 return MainMenuCommand.getInstance();
             }
