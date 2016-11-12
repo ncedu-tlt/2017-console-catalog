@@ -16,8 +16,8 @@ public class AddProductCommand implements Command {
 
     private static AddProductCommand instance;
 
-    List<Category> categories = CategoriesRepository.getInstance().get();
-    long categoryId;
+    private List<Category> categories = CategoriesRepository.getInstance().get();
+    private long categoryId;
 
     public AddProductCommand() {
     }

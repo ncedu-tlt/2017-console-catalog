@@ -17,9 +17,9 @@ public class SearchProductCommand implements Command {
 
     private static SearchProductCommand instance;
 
-    List<Product> products = ProductsRepository.getInstance().get();
-    List<Category> categories = CategoriesRepository.getInstance().get();
-    List<Product> searchResult;
+    private List<Product> products = ProductsRepository.getInstance().get();
+    private List<Category> categories = CategoriesRepository.getInstance().get();
+    private List<Product> searchResult;
 
     public static synchronized SearchProductCommand getInstance() {
         if (instance == null) {
