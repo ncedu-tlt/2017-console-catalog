@@ -89,7 +89,11 @@ public class AddProductCommand implements Command {
         return ProductsMenuCommand.getInstance();
     }
 
-
+    /**
+     * Check for product categories
+     *
+     * @return boolean
+     */
     private boolean containsId(long categoryId) {
         boolean result = false;
 

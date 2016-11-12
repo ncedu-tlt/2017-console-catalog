@@ -136,6 +136,11 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
         return null;
     }
 
+    /**
+     * Check the existence of the Category ID  entered
+     *
+     * @return Error message
+     */
     private String realCategory(long categoryId) {
         List<Category> categories = CategoriesRepository.getInstance().get();
         for (Category category : categories) {
@@ -145,7 +150,10 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
         }
         return "Category not found. Please enter real category.";
     }
-
+    /**
+     * Print all existing category
+     *
+     */
     private void printCategory() {
         List<Category> categories = CategoriesRepository.getInstance().get();
         for (Category category : categories) {

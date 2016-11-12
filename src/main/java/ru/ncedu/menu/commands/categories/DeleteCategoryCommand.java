@@ -54,7 +54,10 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
 
         return MainMenuCommand.getInstance();
     }
-
+    /**
+     * Find product contains in category.
+     * @return Warning message
+     */
     private String inspectionProductCategory() {
 
         int productCount = 0;

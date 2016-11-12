@@ -75,7 +75,10 @@ public class SearchProductCommand implements Command {
         } while (!inExit);
         return ProductsMenuCommand.getInstance();
     }
-
+    /**
+     *  Search products in repository.
+     *
+     */
     private void searchProducts(String productName) {
         searchResult = new ArrayList<>();
         Pattern pattern = Pattern.compile(".*" + productName + ".*");
@@ -88,7 +91,11 @@ public class SearchProductCommand implements Command {
             }
         }
     }
-
+    /**
+     * Search category name by category ID.
+     *
+     * @return Category name
+     */
     private String getCategoryName(long categoryId) {
         for (Category category : categories) {
             if (category.getId() == categoryId) {

@@ -8,11 +8,13 @@ import ru.ncedu.menu.utils.MenuUtils;
 
 public class DeleteProductCommand extends ProductSelectionHandlerCommand {
 
-    public DeleteProductCommand(){
+    public DeleteProductCommand() {
         handler = "Delete";
     }
-    public DeleteProductCommand(Product product){super(product);}
 
+    public DeleteProductCommand(Product product) {
+        super(product);
+    }
 
 
     @Override
@@ -22,7 +24,7 @@ public class DeleteProductCommand extends ProductSelectionHandlerCommand {
 
         MenuUtils.printSeparator();
 
-        System.out.println("Product '" + product.getName() + "' have been deleted" );
+        System.out.println("Product '" + product.getName() + "' have been deleted");
 
         return ProductsMenuCommand.getInstance();
     }
