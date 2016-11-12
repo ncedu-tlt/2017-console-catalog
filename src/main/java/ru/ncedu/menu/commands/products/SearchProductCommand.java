@@ -37,10 +37,10 @@ public class SearchProductCommand implements Command {
             System.out.println("No products have been found");
             return ProductsMenuCommand.getInstance();
         }
-        System.out.println("Please enter the name of a product for found:");
-        MenuUtils.printPrompt();
-        do {
 
+        do {
+            System.out.println("Please enter the name of a product for found:");
+            MenuUtils.printPrompt();
             String searchProduct = scanner.next();
 
             searchProducts(searchProduct);
@@ -65,13 +65,14 @@ public class SearchProductCommand implements Command {
             MenuUtils.printCategorySeparator();
             System.out.println("Press 'S' for new search" +
                     " or any key for exit.");
-            if (scanner.next().equalsIgnoreCase("S")){
+            MenuUtils.printPrompt();
+            if (scanner.next().equalsIgnoreCase("S")) {
                 inExit = false;
-            }else {
+            } else {
                 inExit = true;
             }
 
-        }while (!inExit);
+        } while (!inExit);
         return ProductsMenuCommand.getInstance();
     }
 
