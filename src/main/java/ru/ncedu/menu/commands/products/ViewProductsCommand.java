@@ -42,17 +42,24 @@ ViewProductsCommand implements Command {
             System.out.println("Category ID: " + category.getId());
             System.out.println("Products category name: " + category.getName());
             MenuUtils.printCategorySeparator();
-            System.out.println("All products in this category: ");
+            System.out.println("Products in this category: ");
             MenuUtils.printCategorySeparator();
+            int iterationCount = 0;
 
             for (Product product : products) {
                 if (product.getCategoryId() == categoryId) {
                     System.out.println("Product ID: " + product.getId());
                     System.out.println("Product name: " + product.getName());
-                    System.out.println("Product description: " );
+                    System.out.println("Product description: ");
                     System.out.println(product.getDescription());
+                    iterationCount++;
                     MenuUtils.printSeparator();
                 }
+            }
+            if (iterationCount == 0) {
+                MenuUtils.printSeparator();
+                System.out.println("No products in " + category.getName());
+                MenuUtils.printSeparator();
             }
             MenuUtils.printCategorySeparator();
         }
