@@ -53,16 +53,17 @@ public class AddProductCommand implements Command {
         do {
             try {
                 categoryId = Long.parseLong(scanner.next());
-            } catch (Exception e) {
-                System.out.println("Category must be a number.");
-                return ProductsMenuCommand.getInstance();
-            }
+
             if (containsId(categoryId)) {
                 idIsNotCorrect = false;
             } else {
                 System.out.println("Entered id is not correct, please enter " +
                         "category ID for product:");
                 MenuUtils.printPrompt();
+            }
+            } catch (Exception e) {
+                System.out.println("Category must be a number.");
+                return ProductsMenuCommand.getInstance();
             }
         } while (idIsNotCorrect);
 
