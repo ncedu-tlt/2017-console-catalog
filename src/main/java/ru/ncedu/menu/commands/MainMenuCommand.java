@@ -2,6 +2,7 @@ package ru.ncedu.menu.commands;
 
 import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupMenuCommand;
 import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
+import ru.ncedu.menu.commands.characteristicValues.CharacteristicValuesMenuCommand;
 import ru.ncedu.menu.commands.products.ProductsMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
 
@@ -28,6 +29,7 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("1", "Categories");
         MenuUtils.printOption("2", "Products");
         MenuUtils.printOption("3", "Characteristic groups");
+        MenuUtils.printOption("4", "Characteristic values");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
         MenuUtils.printOption("0", "Exit");
@@ -46,6 +48,8 @@ public class MainMenuCommand implements Command {
                 return ProductsMenuCommand.getInstance();
             case 3:
                 return CharacteristicGroupMenuCommand.getInstance();
+            case 4:
+                return CharacteristicValuesMenuCommand.getInstance();
             case 8:
                 return SaveCommand.getInstance();
             case 9:
