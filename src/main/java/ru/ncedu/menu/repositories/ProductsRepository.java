@@ -101,6 +101,12 @@ public class ProductsRepository implements Repository<Product> {
 
         products.remove(product);
     }
+    public void remove(List<Product> object) {
+
+        if (object.isEmpty()) return;
+
+        products.addAll(object);
+    }
 
     @Override
     public void save() {

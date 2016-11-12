@@ -45,6 +45,8 @@ public class ProductsMenuCommand implements Command {
                 return AddProductCommand.getInstance();
             case 4:
                 return new SelectProductCommand(new EditProductCommand());
+            case 5:
+                return new SelectProductCommand(new DeleteProductCommand());
             default:
                 System.out.println("Unexpected command!");
                 return this;

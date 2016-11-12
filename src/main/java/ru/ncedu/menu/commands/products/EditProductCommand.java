@@ -42,11 +42,14 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
         MenuUtils.printOption("1", "Edit product name");
         MenuUtils.printOption("2", "Edit product category");
         MenuUtils.printOption("3", "Edit product description");
+        MenuUtils.printOption("0", "Back");
         MenuUtils.printPrompt();
 
         int fieldName = scanner.nextInt();
         MenuUtils.printSeparator();
         switch (fieldName) {
+            case 0:
+                return ProductsMenuCommand.getInstance();
             case 1:
                 System.out.println("Please enter new name for product.");
                 String productName = null;
