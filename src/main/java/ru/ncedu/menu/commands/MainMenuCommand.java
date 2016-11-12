@@ -24,6 +24,7 @@ public class MainMenuCommand implements Command {
 
         MenuUtils.printSeparator();
         MenuUtils.printOption("1", "Categories");
+        MenuUtils.printOption("2", "Products");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
         MenuUtils.printOption("0", "Exit");
