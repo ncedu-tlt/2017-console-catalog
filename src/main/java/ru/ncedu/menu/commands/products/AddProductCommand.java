@@ -85,11 +85,6 @@ public class AddProductCommand implements Command {
 
         System.out.println("Product '" + productName + "' has been created");
 
-        List<Product> products = ProductsRepository.getInstance().get();
-        for (Product product : products) {
-            System.out.println(product.getName() + " " + product.getId() + " " + product.getCategoryId());
-        }
-
         return ProductsMenuCommand.getInstance();
     }
 
