@@ -1,6 +1,9 @@
 package ru.ncedu.menu.commands;
 
+import ru.ncedu.menu.repositories.*;
 import ru.ncedu.menu.repositories.CategoriesRepository;
+import ru.ncedu.menu.repositories.PricesRepository;
+import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
 public class LoadCommand implements Command {
@@ -21,6 +24,9 @@ public class LoadCommand implements Command {
     public Command execute() {
 
         CategoriesRepository.getInstance().load();
+        ProductsRepository.getInstance().load();
+        PricesRepository.getInstance().load();
+        CharacteristicGroupRepository.getInstance().load();
 
         MenuUtils.printSeparator();
         System.out.println("All changes have been discarded");
