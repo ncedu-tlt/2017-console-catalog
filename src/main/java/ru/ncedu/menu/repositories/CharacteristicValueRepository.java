@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Created by AlexanderZheleznov on 12.11.2016.
+ * Создаёт репозиторий в JSON формате.
+ * Сохжраняют такие сущности как:
  */
 public class CharacteristicValueRepository implements Repository<CharacteristicValue>{
 
