@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class AddProductCommand implements Command {
 
     private static AddProductCommand instance;
+
     List<Category> categories = CategoriesRepository.getInstance().get();
     long categoryId;
 
@@ -54,13 +55,13 @@ public class AddProductCommand implements Command {
             try {
                 categoryId = Long.parseLong(scanner.next());
 
-            if (containsId(categoryId)) {
-                idIsNotCorrect = false;
-            } else {
-                System.out.println("Entered id is not correct, please enter " +
-                        "category ID for product:");
-                MenuUtils.printPrompt();
-            }
+                if (containsId(categoryId)) {
+                    idIsNotCorrect = false;
+                } else {
+                    System.out.println("Entered id is not correct, please enter " +
+                            "category ID for product:");
+                    MenuUtils.printPrompt();
+                }
             } catch (Exception e) {
                 System.out.println("Category must be a number.");
                 return ProductsMenuCommand.getInstance();

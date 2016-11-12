@@ -32,7 +32,8 @@ public class SelectProductCommand implements Command {
         List<Product> products = ProductsRepository.getInstance().get();
 
         MenuUtils.printSeparator();
-
+        System.out.println(selectionHandler.getHandler() + " product, please choice " +
+                "product.");
         if (products.isEmpty()) {
             System.out.println("No products have been found");
             return ProductsMenuCommand.getInstance();

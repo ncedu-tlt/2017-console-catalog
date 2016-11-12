@@ -7,6 +7,9 @@ abstract class ProductSelectionHandlerCommand implements Command {
 
     protected Product product;
 
+
+    protected String handler;
+
     public ProductSelectionHandlerCommand() {
 
     }
@@ -22,5 +25,10 @@ abstract class ProductSelectionHandlerCommand implements Command {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    public String getHandler() {
+        return handler;
+    }
+
 
 }
