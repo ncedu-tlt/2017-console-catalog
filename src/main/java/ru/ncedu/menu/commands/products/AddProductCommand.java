@@ -1,6 +1,5 @@
 package ru.ncedu.menu.commands.products;
 
-import org.apache.commons.lang.StringUtils;
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.categories.AddCategoryCommand;
 import ru.ncedu.menu.models.Category;
@@ -33,7 +32,6 @@ public class AddProductCommand implements Command {
     public Command execute() {
 
         boolean idIsNotCorrect = true;
-        int count = 0;
 
         Scanner scanner = new Scanner(System.in);
         MenuUtils.printSeparator();
@@ -53,23 +51,19 @@ public class AddProductCommand implements Command {
         MenuUtils.printPrompt();
 
         do {
-
-            categoryId = scanner.nextLong();
+            try {
+                categoryId = Long.parseLong(scanner.next());
+            } catch (Exception e) {
+                System.out.println("Category must be a number.");
+                return ProductsMenuCommand.getInstance();
+            }
             if (containsId(categoryId)) {
                 idIsNotCorrect = false;
             } else {
                 System.out.println("Entered id is not correct, please enter " +
-                        "category ID for product.");
+                        "category ID for product:");
                 MenuUtils.printPrompt();
-                MenuUtils.printSeparator();
-                if (count > 3) {
-                    System.out.println("For exit press 0");
-                    if (scanner.nextLine().equals("0")) {
-                        return ProductsMenuCommand.getInstance();
-                    }
-                }
             }
-            count++;
         } while (idIsNotCorrect);
 
         MenuUtils.printSeparator();
@@ -86,10 +80,17 @@ public class AddProductCommand implements Command {
 
         MenuUtils.printSeparator();
 
+        ProductsRepository.getInstance().add(new Product(categoryId, productName, productDescription));
 
-        return null;
+        System.out.println("Product '" + productName + "' has been created");
+
+        List<Product> products = ProductsRepository.getInstance().get();
+        for (Product product : products) {
+            System.out.println(product.getName() + " " + product.getId() + " " + product.getCategoryId());
+        }
+
+        return ProductsMenuCommand.getInstance();
     }
-
 
 
     private boolean containsId(long categoryId) {

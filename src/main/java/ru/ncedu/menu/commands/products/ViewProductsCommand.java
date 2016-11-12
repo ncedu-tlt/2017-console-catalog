@@ -11,7 +11,8 @@ import ru.ncedu.menu.utils.MenuUtils;
 import java.util.List;
 import java.util.Scanner;
 
-public class ViewProductsCommand implements Command {
+public class
+ViewProductsCommand implements Command {
 
     private static ViewProductsCommand instance;
 
@@ -28,7 +29,7 @@ public class ViewProductsCommand implements Command {
         List<Product> products = ProductsRepository.getInstance().get();
         List<Category> categories = CategoriesRepository.getInstance().get();
 
-        MenuUtils.printSeparator();
+        MenuUtils.printCategorySeparator();
 
         if (products.isEmpty()) {
             System.out.println("No products have been found");
@@ -38,16 +39,22 @@ public class ViewProductsCommand implements Command {
         for (Category category : categories) {
 
             long categoryId = category.getId();
-
-            MenuUtils.printOption(String.valueOf(category.getId()), category.getName());
-            MenuUtils.printSeparator();
+            System.out.println("Category ID: " + category.getId());
+            System.out.println("Products category name: " + category.getName());
+            MenuUtils.printCategorySeparator();
+            System.out.println("All products in this category: ");
+            MenuUtils.printCategorySeparator();
 
             for (Product product : products) {
-                if (product.getId() == categoryId) {
-                    MenuUtils.printOption(String.valueOf(product.getId()), product.getName(), product.getDescription());
+                if (product.getCategoryId() == categoryId) {
+                    System.out.println("Product ID: " + product.getId());
+                    System.out.println("Product name: " + product.getName());
+                    System.out.println("Product description: " );
+                    System.out.println(product.getDescription());
+                    MenuUtils.printSeparator();
                 }
             }
-            MenuUtils.printSeparator();
+            MenuUtils.printCategorySeparator();
         }
         System.out.println("Press Enter to continue");
 
