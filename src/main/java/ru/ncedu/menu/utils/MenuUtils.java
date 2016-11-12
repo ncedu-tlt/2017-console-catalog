@@ -6,6 +6,10 @@ public class MenuUtils {
         System.out.println("--------------------------");
     }
 
+    public static void printCategorySeparator() {
+        System.out.println("==========================");
+    }
+
     public static void printOption(String command, String name) {
         System.out.println(command + " - " + name);
     }
