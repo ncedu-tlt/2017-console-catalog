@@ -21,7 +21,7 @@ public class ProductsMenuCommand implements Command {
     public Command execute() {
         MenuUtils.printSeparator();
         MenuUtils.printOption("1", "View products");
-        MenuUtils.printOption("2", "View products in category");
+        MenuUtils.printOption("2", "Search product");
         MenuUtils.printOption("3", "Add product");
         MenuUtils.printOption("4", "Edit product");
         MenuUtils.printOption("5", "Delete product");
@@ -32,10 +32,11 @@ public class ProductsMenuCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        switch (choice)
-        {
+        switch (choice) {
             case 0:
                 return MainMenuCommand.getInstance();
+            case 1:
+                return ViewProductsCommand.getInstance();
             default:
                 System.out.println("Unexpected command!");
                 return this;
