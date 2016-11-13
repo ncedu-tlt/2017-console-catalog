@@ -17,7 +17,8 @@ public class SearchProductCommand implements Command {
 
     private static SearchProductCommand instance;
 
-    private SearchProductCommand(){}
+    private SearchProductCommand() {
+    }
 
 
     public static synchronized SearchProductCommand getInstance() {
@@ -31,6 +32,7 @@ public class SearchProductCommand implements Command {
     public Command execute() {
         List<Product> products = ProductsRepository.getInstance().get();
         List<Category> categories = CategoriesRepository.getInstance().get();
+
         boolean inExit = false;
         Scanner scanner = new Scanner(System.in);
 
@@ -42,7 +44,7 @@ public class SearchProductCommand implements Command {
         do {
             System.out.println("Please enter the name of a product for found:");
             MenuUtils.printPrompt();
-            String searchProduct = scanner.next();
+            String searchProduct = scanner.nextLine();
 
             List<Product> searchResult = searchProducts(searchProduct, products);
 
@@ -67,7 +69,7 @@ public class SearchProductCommand implements Command {
             System.out.println("Press 'S' for new search" +
                     " or any key for exit.");
             MenuUtils.printPrompt();
-            if (scanner.next().equalsIgnoreCase("S")) {
+            if (scanner.nextLine().trim().equalsIgnoreCase("S")) {
                 inExit = false;
             } else {
                 inExit = true;
@@ -76,9 +78,9 @@ public class SearchProductCommand implements Command {
         } while (!inExit);
         return ProductsMenuCommand.getInstance();
     }
+
     /**
-     *  Search products in repository.
-     *
+     * Search products in repository.
      */
     private List<Product> searchProducts(String productName, List<Product> products) {
 
@@ -94,6 +96,7 @@ public class SearchProductCommand implements Command {
         }
         return searchResult;
     }
+
     /**
      * Search category name by category ID.
      *

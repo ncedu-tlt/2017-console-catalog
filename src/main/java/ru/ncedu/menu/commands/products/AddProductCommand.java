@@ -52,7 +52,7 @@ public class AddProductCommand implements Command {
 
         do {
             try {
-                categoryId = Long.parseLong(scanner.next());
+                categoryId = Long.parseLong(scanner.nextLine());
 
                 if (containsId(categoryId, categories)) {
                     idIsNotCorrect = false;
@@ -71,13 +71,13 @@ public class AddProductCommand implements Command {
         System.out.println("Enter name for product");
         MenuUtils.printPrompt();
 
-        String productName = scanner.next();
+        String productName = scanner.nextLine();
 
         MenuUtils.printSeparator();
         System.out.println("Enter description for product");
         MenuUtils.printPrompt();
 
-        String productDescription = scanner.next();
+        String productDescription = scanner.nextLine();
 
         MenuUtils.printSeparator();
 
