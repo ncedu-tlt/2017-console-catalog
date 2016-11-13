@@ -21,7 +21,6 @@ public class SearchProductCommand implements Command {
 
     private List<Product> products = ProductsRepository.getInstance().get();
     private List<Category> categories = CategoriesRepository.getInstance().get();
-    private List<Product> searchResult;
 
     public static synchronized SearchProductCommand getInstance() {
         if (instance == null) {
@@ -45,7 +44,7 @@ public class SearchProductCommand implements Command {
             MenuUtils.printPrompt();
             String searchProduct = scanner.next();
 
-            searchProducts(searchProduct);
+            List<Product> searchResult = searchProducts(searchProduct);
 
             System.out.println("Search result:");
             if (searchResult.isEmpty()) {
@@ -81,8 +80,9 @@ public class SearchProductCommand implements Command {
      *  Search products in repository.
      *
      */
-    private void searchProducts(String productName) {
-        searchResult = new ArrayList<>();
+    private List<Product> searchProducts(String productName) {
+
+        List<Product> searchResult = new ArrayList<>();
         Pattern pattern = Pattern.compile(".*" + productName + ".*");
         Matcher matcher;
 
@@ -92,6 +92,7 @@ public class SearchProductCommand implements Command {
                 searchResult.add(product);
             }
         }
+        return searchResult;
     }
     /**
      * Search category name by category ID.

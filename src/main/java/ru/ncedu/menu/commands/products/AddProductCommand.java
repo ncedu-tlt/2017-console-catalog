@@ -17,7 +17,6 @@ public class AddProductCommand implements Command {
     private static AddProductCommand instance;
 
     private List<Category> categories = CategoriesRepository.getInstance().get();
-    private long categoryId;
 
     private AddProductCommand() {
     }
@@ -32,6 +31,7 @@ public class AddProductCommand implements Command {
     @Override
     public Command execute() {
 
+        long categoryId;
         boolean idIsNotCorrect = true;
 
         Scanner scanner = new Scanner(System.in);
