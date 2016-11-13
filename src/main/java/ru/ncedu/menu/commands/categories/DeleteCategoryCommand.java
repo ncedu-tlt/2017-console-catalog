@@ -39,7 +39,6 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
             }
         }
 
-        ProductsRepository.getInstance().remove(category.getId());
         CategoriesRepository.getInstance().remove(category);
 
 
