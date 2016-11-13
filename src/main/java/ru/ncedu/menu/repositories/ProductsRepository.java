@@ -101,11 +101,18 @@ public class ProductsRepository implements Repository<Product> {
 
         products.remove(product);
     }
-    public void remove(List<Product> object) {
+    public void remove(long categoryId) {
 
-        if (object.isEmpty()) return;
+        List<Product> productsToRemove = new ArrayList<>();
 
-        products.addAll(object);
+        if (categoryId == 0) return;
+
+        for (Product product : products){
+            if (product.getCategoryId() == categoryId){
+                productsToRemove.add(product);
+            }
+        }
+        products.addAll(productsToRemove);
     }
 
     @Override

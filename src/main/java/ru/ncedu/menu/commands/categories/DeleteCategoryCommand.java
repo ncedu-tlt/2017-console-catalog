@@ -26,7 +26,6 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
     @Override
     public Command execute() {
 
-        List<Product> productsToRemove = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,12 +39,7 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
             }
         }
 
-        for (Product product : products){
-            if (product.getCategoryId() == category.getId()){
-                productsToRemove.add(product);
-            }
-        }
-        ProductsRepository.getInstance().remove(productsToRemove);
+        ProductsRepository.getInstance().remove(category.getId());
         CategoriesRepository.getInstance().remove(category);
 
 
