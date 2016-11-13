@@ -11,10 +11,11 @@ import ru.ncedu.menu.utils.MenuUtils;
 import java.util.List;
 import java.util.Scanner;
 
-public class
-ViewProductsCommand implements Command {
+public class ViewProductsCommand implements Command {
 
     private static ViewProductsCommand instance;
+
+    private ViewProductsCommand(){}
 
     public static synchronized ViewProductsCommand getInstance() {
         if (instance == null) {

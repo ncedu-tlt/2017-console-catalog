@@ -14,6 +14,7 @@ public class SelectProductCommand implements Command {
 
     private ProductSelectionHandlerCommand selectionHandler;
 
+
     public SelectProductCommand(ProductSelectionHandlerCommand selectionHandler) {
         this.selectionHandler = selectionHandler;
     }

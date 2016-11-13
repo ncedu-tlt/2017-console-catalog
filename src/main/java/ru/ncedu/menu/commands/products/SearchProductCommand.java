@@ -17,6 +17,8 @@ public class SearchProductCommand implements Command {
 
     private static SearchProductCommand instance;
 
+    private SearchProductCommand(){}
+
     private List<Product> products = ProductsRepository.getInstance().get();
     private List<Category> categories = CategoriesRepository.getInstance().get();
     private List<Product> searchResult;

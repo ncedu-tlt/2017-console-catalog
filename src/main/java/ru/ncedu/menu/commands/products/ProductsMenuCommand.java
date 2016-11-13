@@ -10,6 +10,8 @@ public class ProductsMenuCommand implements Command {
 
     private static ProductsMenuCommand instance;
 
+    private ProductsMenuCommand(){}
+
     public static synchronized ProductsMenuCommand getInstance() {
         if (instance == null) {
             instance = new ProductsMenuCommand();

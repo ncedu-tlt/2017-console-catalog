@@ -19,7 +19,7 @@ public class AddProductCommand implements Command {
     private List<Category> categories = CategoriesRepository.getInstance().get();
     private long categoryId;
 
-    public AddProductCommand() {
+    private AddProductCommand() {
     }
 
     public static synchronized AddProductCommand getInstance() {
