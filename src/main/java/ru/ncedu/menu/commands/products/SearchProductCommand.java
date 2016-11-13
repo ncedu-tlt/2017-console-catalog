@@ -69,10 +69,11 @@ public class SearchProductCommand implements Command {
             System.out.println("Press 'S' for new search" +
                     " or any key for exit.");
             MenuUtils.printPrompt();
-            if (scanner.nextLine().trim().equalsIgnoreCase("S")) {
-                inExit = false;
-            } else {
+            String inExitResult = scanner.nextLine().trim();
+            if (inExitResult.equalsIgnoreCase("S")) {
                 inExit = true;
+            } else {
+                inExit = false;
             }
 
         } while (!inExit);
