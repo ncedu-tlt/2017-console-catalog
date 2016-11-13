@@ -56,9 +56,9 @@ public class SelectProductCommand implements Command {
         MenuUtils.printPrompt();
 
         Scanner scanner = new Scanner(System.in);
-        String productId = scanner.next();
+        String productId = scanner.nextLine();
 
-        if (productId.equals("0")){
+        if (productId.trim().equals("0")) {
             return ProductsMenuCommand.getInstance();
         }
 
@@ -66,14 +66,14 @@ public class SelectProductCommand implements Command {
             long id = Long.parseLong(productId);
             Product product = ProductsRepository.getInstance().get(id);
 
-            if (product != null){
+            if (product != null) {
                 selectionHandler.setProduct(product);
                 return selectionHandler;
             }
 
             MenuUtils.printSeparator();
             System.out.println("No product with such ID have been found!");
-        }  catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             MenuUtils.printSeparator();
             System.out.println("Product ID should be a number");
         }

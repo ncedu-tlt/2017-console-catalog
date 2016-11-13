@@ -17,11 +17,9 @@ public class SearchProductCommand implements Command {
 
     private static SearchProductCommand instance;
 
-    private SearchProductCommand(){}
+    private SearchProductCommand() {
+    }
 
-    private List<Product> products = ProductsRepository.getInstance().get();
-    private List<Category> categories = CategoriesRepository.getInstance().get();
-    private List<Product> searchResult;
 
     public static synchronized SearchProductCommand getInstance() {
         if (instance == null) {
@@ -32,6 +30,9 @@ public class SearchProductCommand implements Command {
 
     @Override
     public Command execute() {
+        List<Product> products = ProductsRepository.getInstance().get();
+        List<Category> categories = CategoriesRepository.getInstance().get();
+
         boolean inExit = false;
         Scanner scanner = new Scanner(System.in);
 
@@ -43,9 +44,9 @@ public class SearchProductCommand implements Command {
         do {
             System.out.println("Please enter the name of a product for found:");
             MenuUtils.printPrompt();
-            String searchProduct = scanner.next();
+            String searchProduct = scanner.nextLine();
 
-            searchProducts(searchProduct);
+            List<Product> searchResult = searchProducts(searchProduct, products);
 
             System.out.println("Search result:");
             if (searchResult.isEmpty()) {
@@ -56,7 +57,7 @@ public class SearchProductCommand implements Command {
                 for (Product product : searchResult) {
                     MenuUtils.printCategorySeparator();
                     System.out.println("Category product: "
-                            + getCategoryName(product.getCategoryId()));
+                            + getCategoryName(product.getCategoryId(), categories));
                     MenuUtils.printCategorySeparator();
                     System.out.println("Product name: " + product.getName());
                     System.out.println("Product ID: " + product.getId());
@@ -68,21 +69,21 @@ public class SearchProductCommand implements Command {
             System.out.println("Press 'S' for new search" +
                     " or any key for exit.");
             MenuUtils.printPrompt();
-            if (scanner.next().equalsIgnoreCase("S")) {
-                inExit = false;
-            } else {
+
+            if (scanner.nextLine().trim().equalsIgnoreCase("S")) {
                 inExit = true;
             }
 
         } while (!inExit);
         return ProductsMenuCommand.getInstance();
     }
+
     /**
-     *  Search products in repository.
-     *
+     * Search products in repository.
      */
-    private void searchProducts(String productName) {
-        searchResult = new ArrayList<>();
+    private List<Product> searchProducts(String productName, List<Product> products) {
+
+        List<Product> searchResult = new ArrayList<>();
         Pattern pattern = Pattern.compile(".*" + productName + ".*");
         Matcher matcher;
 
@@ -92,13 +93,15 @@ public class SearchProductCommand implements Command {
                 searchResult.add(product);
             }
         }
+        return searchResult;
     }
+
     /**
      * Search category name by category ID.
      *
      * @return Category name
      */
-    private String getCategoryName(long categoryId) {
+    private String getCategoryName(long categoryId, List<Category> categories) {
         for (Category category : categories) {
             if (category.getId() == categoryId) {
                 return category.getName();
