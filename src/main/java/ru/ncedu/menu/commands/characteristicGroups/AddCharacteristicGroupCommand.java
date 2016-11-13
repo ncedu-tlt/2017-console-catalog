@@ -34,7 +34,7 @@ public class AddCharacteristicGroupCommand implements Command {
         String errorMessage = validate(characteristicGroupName);
         if (errorMessage != null) {
             MenuUtils.printSeparator();
-            System.out.println(validate(characteristicGroupName));
+            System.out.println(errorMessage);
             return this;
         }
 

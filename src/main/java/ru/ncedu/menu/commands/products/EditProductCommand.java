@@ -61,7 +61,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
                 String errorMessage = validate(productName);
                 if (errorMessage != null) {
                     MenuUtils.printSeparator();
-                    System.out.println(validate(productName));
+                    System.out.println(errorMessage);
                     return this;
                 }
 

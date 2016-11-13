@@ -27,11 +27,11 @@ public class EditCategoryCommand extends CategorySelectionHandlerCommand {
         System.out.println("Enter new category name:");
         MenuUtils.printPrompt();
 
-        String categoryName = scanner.next();
+        String categoryName = scanner.nextLine();
         String errorMessage = validate(categoryName);
         if (errorMessage != null) {
             MenuUtils.printSeparator();
-            System.out.println(validate(categoryName));
+            System.out.println(errorMessage);
             return this;
         }
 

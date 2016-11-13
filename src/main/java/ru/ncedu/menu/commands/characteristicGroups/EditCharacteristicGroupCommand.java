@@ -3,7 +3,6 @@ package ru.ncedu.menu.commands.characteristicGroups;
 import org.apache.commons.lang.StringUtils;
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.MainMenuCommand;
-import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupSelectionHandlerCommand;
 import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.repositories.CharacteristicGroupRepository;
 import ru.ncedu.menu.utils.MenuUtils;
@@ -32,7 +31,7 @@ public class EditCharacteristicGroupCommand extends CharacteristicGroupSelection
         String errorMessage = validate(characteristicGroupName);
         if (errorMessage != null) {
             MenuUtils.printSeparator();
-            System.out.println(validate(characteristicGroupName));
+            System.out.println(errorMessage);
             return this;
         }
 

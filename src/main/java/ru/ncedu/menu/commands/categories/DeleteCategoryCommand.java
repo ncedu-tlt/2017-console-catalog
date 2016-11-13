@@ -8,7 +8,6 @@ import ru.ncedu.menu.repositories.CategoriesRepository;
 import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,7 +33,7 @@ public class DeleteCategoryCommand extends CategorySelectionHandlerCommand {
             System.out.println(inspectionProductCategory());
             System.out.println("Enter 'D' for delete category and" +
                     " products, and any key for return to menu.");
-            if (!(scanner.next().equalsIgnoreCase("d"))){
+            if (!(scanner.nextLine().equalsIgnoreCase("d"))){
                 return MainMenuCommand.getInstance();
             }
         }
