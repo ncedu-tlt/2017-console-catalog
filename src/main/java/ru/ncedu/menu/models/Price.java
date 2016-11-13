@@ -3,9 +3,6 @@ package ru.ncedu.menu.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * Created by Andrey on 11/12/2016.
- */
 public class Price implements Serializable {
     private long marketId;
     private long productId;
@@ -14,11 +11,16 @@ public class Price implements Serializable {
     public Price() {
     }
 
+    public Price (BigDecimal amount){
+        this.amount = amount;
+    }
+
     public Price(long marketId, long productId, BigDecimal amount) {
         this.marketId = marketId;
         this.productId = productId;
         this.amount = amount;
     }
+
 
     public long getMarketId() {
         return marketId;

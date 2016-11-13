@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Andrey on 11/12/2016.
- */
+
 public class PricesRepository implements Repository<Price> {
 
     private static final String FILE_NAME = "prices.json";
@@ -70,7 +68,7 @@ public class PricesRepository implements Repository<Price> {
             return;
         }
         Price price = get(object.getMarketId(), object.getProductId());
-        remove(price);
+        prices.remove(price);
     }
 
     @Override
