@@ -19,8 +19,6 @@ public class SearchProductCommand implements Command {
 
     private SearchProductCommand(){}
 
-    private List<Product> products = ProductsRepository.getInstance().get();
-    private List<Category> categories = CategoriesRepository.getInstance().get();
 
     public static synchronized SearchProductCommand getInstance() {
         if (instance == null) {
@@ -31,6 +29,8 @@ public class SearchProductCommand implements Command {
 
     @Override
     public Command execute() {
+        List<Product> products = ProductsRepository.getInstance().get();
+        List<Category> categories = CategoriesRepository.getInstance().get();
         boolean inExit = false;
         Scanner scanner = new Scanner(System.in);
 
@@ -44,7 +44,7 @@ public class SearchProductCommand implements Command {
             MenuUtils.printPrompt();
             String searchProduct = scanner.next();
 
-            List<Product> searchResult = searchProducts(searchProduct);
+            List<Product> searchResult = searchProducts(searchProduct, products);
 
             System.out.println("Search result:");
             if (searchResult.isEmpty()) {
@@ -55,7 +55,7 @@ public class SearchProductCommand implements Command {
                 for (Product product : searchResult) {
                     MenuUtils.printCategorySeparator();
                     System.out.println("Category product: "
-                            + getCategoryName(product.getCategoryId()));
+                            + getCategoryName(product.getCategoryId(), categories));
                     MenuUtils.printCategorySeparator();
                     System.out.println("Product name: " + product.getName());
                     System.out.println("Product ID: " + product.getId());
@@ -80,7 +80,7 @@ public class SearchProductCommand implements Command {
      *  Search products in repository.
      *
      */
-    private List<Product> searchProducts(String productName) {
+    private List<Product> searchProducts(String productName, List<Product> products) {
 
         List<Product> searchResult = new ArrayList<>();
         Pattern pattern = Pattern.compile(".*" + productName + ".*");
@@ -99,7 +99,7 @@ public class SearchProductCommand implements Command {
      *
      * @return Category name
      */
-    private String getCategoryName(long categoryId) {
+    private String getCategoryName(long categoryId, List<Category> categories) {
         for (Category category : categories) {
             if (category.getId() == categoryId) {
                 return category.getName();
