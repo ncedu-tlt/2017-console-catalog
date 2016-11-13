@@ -33,11 +33,11 @@ public final class AddCharacteristicsCommand implements Command {
         MenuUtils.printPrompt();
 
         String characteristicName = scanner.next();
-        String error_message = validate(characteristicName);
+        String error_message = validate(characteristicName); //TODO: используем Camel Case, исключение - константы
 
         if(error_message != null){
             MenuUtils.printSeparator();
-            System.out.println(validate(characteristicName));
+            System.out.println(error_message);
             MenuUtils.printPrompt();
         }
 
