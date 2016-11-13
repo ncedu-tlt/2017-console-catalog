@@ -15,8 +15,7 @@ public class ViewProductsCommand implements Command {
 
     private static ViewProductsCommand instance;
 
-    private ViewProductsCommand() {
-    }
+    private ViewProductsCommand(){}
 
     public static synchronized ViewProductsCommand getInstance() {
         if (instance == null) {

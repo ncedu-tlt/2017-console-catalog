@@ -9,6 +9,9 @@ import ru.ncedu.menu.repositories.CategoriesRepository;
 import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,6 +34,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
 
 
         Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         MenuUtils.printSeparator();
         System.out.println("Choice field for Edit: ");
@@ -41,7 +45,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
         MenuUtils.printOption("0", "Back");
         MenuUtils.printPrompt();
 
-        int fieldName = Integer.parseInt(scanner.nextLine());
+        int fieldName = scanner.nextInt();
         MenuUtils.printSeparator();
         switch (fieldName) {
             case 0:
@@ -49,9 +53,11 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
             case 1:
                 System.out.println("Please enter new name for product.");
                 String productName = null;
-
-                productName = scanner.nextLine();
-
+                try {
+                    productName = reader.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 String errorMessage = validate(productName);
                 if (errorMessage != null) {
                     MenuUtils.printSeparator();
@@ -74,7 +80,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
 
                 MenuUtils.printSeparator();
 
-                long categoryId = Long.parseLong(scanner.nextLine());
+                long categoryId = scanner.nextLong();
 
                 if (realCategory(categoryId) != null) {
                     MenuUtils.printSeparator();
@@ -95,8 +101,11 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
             case 3:
                 System.out.println("Please enter new description");
                 String productDescription = null;
-
-                productDescription = scanner.nextLine();
+                try {
+                    productDescription = reader.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 product.setDescription(productDescription);
                 ProductsRepository.getInstance().update(product);
@@ -141,9 +150,9 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
         }
         return "Category not found. Please enter real category.";
     }
-
     /**
      * Print all existing category
+     *
      */
     private void printCategory() {
         List<Category> categories = CategoriesRepository.getInstance().get();

@@ -16,6 +16,9 @@ public class AddProductCommand implements Command {
 
     private static AddProductCommand instance;
 
+    private List<Category> categories = CategoriesRepository.getInstance().get();
+    private long categoryId;
+
     private AddProductCommand() {
     }
 
@@ -28,9 +31,7 @@ public class AddProductCommand implements Command {
 
     @Override
     public Command execute() {
-        List<Category> categories = CategoriesRepository.getInstance().get();
 
-        long categoryId;
         boolean idIsNotCorrect = true;
 
         Scanner scanner = new Scanner(System.in);
@@ -52,9 +53,9 @@ public class AddProductCommand implements Command {
 
         do {
             try {
-                categoryId = Long.parseLong(scanner.nextLine());
+                categoryId = Long.parseLong(scanner.next());
 
-                if (containsId(categoryId, categories)) {
+                if (containsId(categoryId)) {
                     idIsNotCorrect = false;
                 } else {
                     System.out.println("Entered id is not correct, please enter " +
@@ -71,13 +72,13 @@ public class AddProductCommand implements Command {
         System.out.println("Enter name for product");
         MenuUtils.printPrompt();
 
-        String productName = scanner.nextLine();
+        String productName = scanner.next();
 
         MenuUtils.printSeparator();
         System.out.println("Enter description for product");
         MenuUtils.printPrompt();
 
-        String productDescription = scanner.nextLine();
+        String productDescription = scanner.next();
 
         MenuUtils.printSeparator();
 
@@ -93,7 +94,7 @@ public class AddProductCommand implements Command {
      *
      * @return boolean
      */
-    private boolean containsId(long categoryId, List<Category> categories) {
+    private boolean containsId(long categoryId) {
         boolean result = false;
 
         for (Category category : categories) {
