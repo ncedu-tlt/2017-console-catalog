@@ -11,6 +11,12 @@ public class Characteristic implements Serializable {
     public Characteristic() {
     }
 
+    public Characteristic(String name, long categoryId, long groupId) {
+        this.name = name;
+        this.categoryId = categoryId;
+        this.groupId = groupId;
+    }
+
     public Characteristic(long id, String name, long categoryId, long groupId) {
         this.id = id;
         this.name = name;
