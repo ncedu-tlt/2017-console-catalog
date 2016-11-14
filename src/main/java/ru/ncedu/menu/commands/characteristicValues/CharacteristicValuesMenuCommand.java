@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Created by Alexander on 13.11.2016.
  */
-public class CharacteristicValuesMenuCommand implements Command{
+public final class CharacteristicValuesMenuCommand implements Command{
 
     private static CharacteristicValuesMenuCommand instance;
 

@@ -6,14 +6,14 @@ import ru.ncedu.menu.models.CharacteristicValue;
 /**
  * Created by Alexander on 14.11.2016.
  */
-public abstract class CharacteristicSelectionHandlerCommand implements Command{
+public abstract class CharacteristicValueSelectionHandlerCommand implements Command{
 
     protected CharacteristicValue characteristicValue;
 
-    public CharacteristicSelectionHandlerCommand() {
+    public CharacteristicValueSelectionHandlerCommand() {
     }
 
-    public CharacteristicSelectionHandlerCommand(CharacteristicValue characteristicValue) {
+    public CharacteristicValueSelectionHandlerCommand(CharacteristicValue characteristicValue) {
         this.characteristicValue = characteristicValue;
     }
 

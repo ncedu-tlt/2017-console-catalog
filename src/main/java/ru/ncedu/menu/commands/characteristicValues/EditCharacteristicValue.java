@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Created by Alexander on 13.11.2016.
  */
-public class EditCharacteristicValue extends CharacteristicSelectionHandlerCommand{
+public class EditCharacteristicValue extends CharacteristicValueSelectionHandlerCommand{
     public EditCharacteristicValue() {
     }
 
@@ -27,13 +27,13 @@ public class EditCharacteristicValue extends CharacteristicSelectionHandlerComma
         MenuUtils.printPrompt();
 
         String valueOfCharacteristic = scanner.nextLine();
-//        String errorMessage = validate(valueOfCharacteristic);
+        String errorMessage = validate(valueOfCharacteristic);
 
-//        if(errorMessage != null){
-//            MenuUtils.printSeparator();
-//            System.out.println(errorMessage);
-//            return this;
-//        }
+        if(errorMessage != null){
+            MenuUtils.printSeparator();
+            System.out.println(errorMessage);
+            return this;
+        }
 
         characteristicValue.setValue(valueOfCharacteristic);
 

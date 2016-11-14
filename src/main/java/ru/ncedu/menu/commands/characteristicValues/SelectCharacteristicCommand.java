@@ -13,21 +13,21 @@ import java.util.Scanner;
  */
 public class SelectCharacteristicCommand implements Command{
 
-    private CharacteristicSelectionHandlerCommand characteristicSelectionHandlerCommand;
+    private CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand;
 
     public SelectCharacteristicCommand() {
     }
 
-    public SelectCharacteristicCommand(CharacteristicSelectionHandlerCommand characteristicSelectionHandlerCommand) {
-        this.characteristicSelectionHandlerCommand = characteristicSelectionHandlerCommand;
+    public SelectCharacteristicCommand(CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand) {
+        this.characteristicValueSelectionHandlerCommand = characteristicValueSelectionHandlerCommand;
     }
 
-    public CharacteristicSelectionHandlerCommand getCharacteristicSelectionHandlerCommand() {
-        return characteristicSelectionHandlerCommand;
+    public CharacteristicValueSelectionHandlerCommand getCharacteristicValueSelectionHandlerCommand() {
+        return characteristicValueSelectionHandlerCommand;
     }
 
-    public void setCharacteristicSelectionHandlerCommand(CharacteristicSelectionHandlerCommand characteristicSelectionHandlerCommand) {
-        this.characteristicSelectionHandlerCommand = characteristicSelectionHandlerCommand;
+    public void setCharacteristicValueSelectionHandlerCommand(CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand) {
+        this.characteristicValueSelectionHandlerCommand = characteristicValueSelectionHandlerCommand;
     }
 
 
@@ -64,8 +64,8 @@ public class SelectCharacteristicCommand implements Command{
             CharacteristicValue characteristicValue = CharacteristicValueRepository.getInstance().get(id);
 
             if(characteristicValue == null){
-                characteristicSelectionHandlerCommand.setCharacteristicValue(characteristicValue);
-                return characteristicSelectionHandlerCommand;
+                characteristicValueSelectionHandlerCommand.setCharacteristicValue(characteristicValue);
+                return characteristicValueSelectionHandlerCommand;
             }
 
             MenuUtils.printSeparator();

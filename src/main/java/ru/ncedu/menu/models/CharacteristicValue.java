@@ -49,4 +49,8 @@ public class CharacteristicValue implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
+
+    public void getMsg() {
+        System.out.println("hello");
+    }
 }
