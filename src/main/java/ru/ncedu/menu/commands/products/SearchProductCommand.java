@@ -70,7 +70,7 @@ public class SearchProductCommand implements Command {
                     " or any key for exit.");
             MenuUtils.printPrompt();
 
-            if (scanner.nextLine().trim().equalsIgnoreCase("S")) {
+            if (!scanner.nextLine().trim().equalsIgnoreCase("S")) {
                 inExit = true;
             }
 

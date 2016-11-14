@@ -41,7 +41,7 @@ public class EditCharacteristicGroupCommand extends CharacteristicGroupSelection
         MenuUtils.printSeparator();
         System.out.println("Category have been updated");
 
-        return MainMenuCommand.getInstance();
+        return CharacteristicGroupMenuCommand.getInstance();
     }
 
     /**

@@ -29,7 +29,7 @@ public final class AddCharacteristicsCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         MenuUtils.printSeparator();
-        System.out.println("Add new charachteristic:");
+        System.out.println("Add new characteristic:");
         MenuUtils.printPrompt();
 
         String characteristicName = scanner.next();

@@ -43,7 +43,7 @@ public class AddCharacteristicGroupCommand implements Command {
         MenuUtils.printSeparator();
         System.out.println("Characteristic group '" + characteristicGroupName + "' has been created");
         
-        return MainMenuCommand.getInstance();
+        return CharacteristicGroupMenuCommand.getInstance();
     }
 
     /**

@@ -11,7 +11,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
 
 
     private static final String FILE_NAME = "characteristicGroup.json";
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static CharacteristicGroupRepository instance;
 

@@ -35,7 +35,7 @@ public class SelectCharacteristicGroupCommand implements Command {
         MenuUtils.printSeparator();
 
         if (categories.isEmpty()) {
-            System.out.println("No categories have been found");
+            System.out.println("No characteristic groups have been found");
             return CharacteristicGroupMenuCommand.getInstance();
         }
 

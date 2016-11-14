@@ -23,6 +23,6 @@ public class DeleteCharacteristicGroupCommand extends CharacteristicGroupSelecti
         MenuUtils.printSeparator();
         System.out.println("Characteristic group '" + characteristicGroup.getName() + "' have been deleted");
 
-        return MainMenuCommand.getInstance();
+        return CharacteristicGroupMenuCommand.getInstance();
     }
 }
