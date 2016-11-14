@@ -13,11 +13,12 @@ public class CharacteristicValue implements Serializable {
     public CharacteristicValue(){
     }
 
-    public CharacteristicValue(long characteristicId) {
-        this.characteristicId = characteristicId;
+    public CharacteristicValue(String value) {
+        this.value = value;
     }
 
-    public CharacteristicValue(String value) {
+    public CharacteristicValue(long characteristicId, String value){
+        this.characteristicId = characteristicId;
         this.value = value;
     }
 
