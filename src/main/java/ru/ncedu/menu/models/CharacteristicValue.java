@@ -21,15 +21,8 @@ public class CharacteristicValue implements Serializable {
         this.value = value;
     }
 
-    public CharacteristicValue(long characteristicId, long productId, String value) {
-        this.characteristicId = characteristicId;
-        this.productId = productId;
-        this.value = value;
-    }
-
     public CharacteristicValue(CharacteristicValue characteristicValue){
-        this(characteristicValue.getCharacteristicId(), characteristicValue.getProductId(),
-                characteristicValue.getValue());
+        this(characteristicValue.getCharacteristicId(), characteristicValue.getValue());
     }
 
     public long getCharacteristicId() {

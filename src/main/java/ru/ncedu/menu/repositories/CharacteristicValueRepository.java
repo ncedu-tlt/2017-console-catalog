@@ -37,10 +37,9 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
         return characteristicValues;
     }
 
-    public CharacteristicValue get(long id_character, long id_product){
+    public CharacteristicValue get(long id_characteristic){
         for(CharacteristicValue value : characteristicValues){
-            if(value.getCharacteristicId() == id_character
-                    && value.getProductId() == id_product){
+            if(value.getCharacteristicId() == id_characteristic){
                 return value;
             }
         }
@@ -77,8 +76,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
         if(object == null)
             return;
 
-        CharacteristicValue characteristicValue = get(object.getCharacteristicId(),
-                object.getProductId());
+        CharacteristicValue characteristicValue = get(object.getCharacteristicId());
 
         characteristicValues.remove(characteristicValue);
 

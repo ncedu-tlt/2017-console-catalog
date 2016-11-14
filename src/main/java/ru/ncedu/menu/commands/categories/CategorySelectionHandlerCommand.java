@@ -3,7 +3,7 @@ package ru.ncedu.menu.commands.categories;
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.models.Category;
 
-public abstract class CategorySelectionHandlerCommand implements Command {
+public abstract class CategorySelectionHandlerCommand implements Command{
 
     protected Category category;
 

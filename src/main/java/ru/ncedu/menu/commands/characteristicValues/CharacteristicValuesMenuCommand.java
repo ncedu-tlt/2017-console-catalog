@@ -47,9 +47,9 @@ public class CharacteristicValuesMenuCommand implements Command{
             case 2:
                 return AddCharacteristicsCommand.getInstance();
             case 3:
-//                return SelectCharacteristicCommand.getInstance(new EditCharacteristic);
+                return new SelectCharacteristicCommand(new EditCharacteristicValue());
 //            case 4:
-//                return SelectCharacteristicCommand.getInstance(new DeleteCharacteristic);
+//                return SelectCharacteristicCommand.getInstance(new DeleteCharacteristicValue);
             default:
                 System.out.println("Uknown command");
                 return this;

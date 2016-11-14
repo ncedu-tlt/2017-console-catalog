@@ -40,7 +40,6 @@ public class EditCategoryCommand extends CategorySelectionHandlerCommand {
 
         MenuUtils.printSeparator();
         System.out.println("Category have been updated");
-
         return MainMenuCommand.getInstance();
     }
 

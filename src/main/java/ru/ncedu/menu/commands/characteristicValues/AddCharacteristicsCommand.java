@@ -32,7 +32,7 @@ public final class AddCharacteristicsCommand implements Command {
         System.out.println("Add new characteristic:");
         MenuUtils.printPrompt();
 
-        String characteristicName = scanner.next();
+        String characteristicName = scanner.nextLine();
         String error_message = validate(characteristicName); //TODO: используем Camel Case, исключение - константы
 
         if(error_message != null){
