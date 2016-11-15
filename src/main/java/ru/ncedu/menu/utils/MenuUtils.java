@@ -1,5 +1,7 @@
 package ru.ncedu.menu.utils;
 
+import java.util.Scanner;
+
 public class MenuUtils {
 
     public static void printSeparator() {
@@ -18,4 +20,25 @@ public class MenuUtils {
         System.out.print("> ");
     }
 
+    public static long getLong(){
+        long number;
+        Scanner scanner = new Scanner(System.in);
+        try{
+            number = Long.parseLong(scanner.nextLine());
+        } catch (NumberFormatException e){
+            System.out.println("Number is not correct, repeat yours entry");
+            return getLong();
+        }
+
+        return number;
+    }
+
+    public static long getId(){
+        long id = getLong();
+        if (id <= 0){
+            System.out.println("ID can't be negative, repeat yours entry");
+            return getId();
+        }
+        return id;
+    }
 }

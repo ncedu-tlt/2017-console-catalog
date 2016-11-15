@@ -45,29 +45,18 @@ public class AddPriceCommand implements Command{
         MenuUtils.printSeparator();
         System.out.println("Create new price");
         MenuUtils.printSeparator();
-        MenuUtils.printPrompt();
-
         System.out.println("Enter market ID");
-        try {
-            long marketIdScan = Long.parseLong(scanner.nextLine());
-        if (marketIdScan < 0){
-            System.out.println("Market ID can't be negative");
-            return AddPriceCommand.getInstance();
-        }
+        long marketIdScan = MenuUtils.getId();
 
         System.out.println("Enter product ID");
-        long productIdScan = Long.parseLong(scanner.nextLine());
-            if (productIdScan < 0){
-                System.out.println("Market ID can't be negative");
-                return AddPriceCommand.getInstance();
-            }
-            else if (ProductsId(productIdScan) == false){
+        long productIdScan = MenuUtils.getId();
+            if (ProductsId(productIdScan) == false){
                 System.out.println("Product is not found, create new product");
                 return AddProductCommand.getInstance();
             }
-
         System.out.println("Enter amount (Example 0.00)");
-            BigDecimal priceValue = scanner.nextBigDecimal();
+        try {
+        BigDecimal priceValue = scanner.nextBigDecimal();
             if (priceValue.signum() <= 0) {
                 System.out.println("Amount can't be negative");
                 return AddPriceCommand.getInstance();
@@ -81,5 +70,4 @@ public class AddPriceCommand implements Command{
         }
         return PriceMenuCommand.getInstance();
     }
-
 }
