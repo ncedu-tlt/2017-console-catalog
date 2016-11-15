@@ -7,17 +7,16 @@ import ru.ncedu.menu.utils.MenuUtils;
 
 public class DeletePriceCommand extends PriceSelectionHandlerCommand {
 
-    public DeletePriceCommand() {}
+    public DeletePriceCommand() {
+    }
 
     @Override
     public Command execute() {
         PricesRepository.getInstance().remove(price);
         MenuUtils.printSeparator();
-        System.out.println("Prise: " + price.getAmount() + "has been deleted");
+        System.out.println("Priсe: " + price.getAmount() + "has been deleted");
         return MainMenuCommand.getInstance();
     }
-
-
 
 
 }

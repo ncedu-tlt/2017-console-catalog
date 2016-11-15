@@ -8,13 +8,14 @@ import ru.ncedu.menu.utils.MenuUtils;
 import java.util.List;
 import java.util.Scanner;
 
-public class SelectPriceCommand implements Command{
+public class SelectPriceCommand implements Command {
 
     private PriceSelectionHandlerCommand selectionHandlerCommand;
 
-    public SelectPriceCommand(){}
+    public SelectPriceCommand() {
+    }
 
-    public SelectPriceCommand(PriceSelectionHandlerCommand selectionHandlerCommand){
+    public SelectPriceCommand(PriceSelectionHandlerCommand selectionHandlerCommand) {
         this.selectionHandlerCommand = selectionHandlerCommand;
     }
 
@@ -24,12 +25,12 @@ public class SelectPriceCommand implements Command{
 
         MenuUtils.printSeparator();
 
-        if (prices.isEmpty()){
-            System.out.println("Prise is not found");
+        if (prices.isEmpty()) {
+            System.out.println("Priсe is not found");
             return PriceMenuCommand.getInstance();
         }
 
-        for (Price price: prices){
+        for (Price price : prices) {
             System.out.println("Market ID " + String.valueOf(price.getMarketId()) + "\n" + "Product ID " + String.valueOf(price.getProductId()) + "\n" + "Amount " + String.valueOf(price.getAmount()));
         }
         MenuUtils.printOption("0", "Back");
@@ -39,10 +40,10 @@ public class SelectPriceCommand implements Command{
         long marketId = scanner.nextLong();
         long productId = scanner.nextLong();
 
-        if (marketId == 0){
+        if (marketId == 0) {
             return PriceMenuCommand.getInstance();
         }
-        if (productId == 0){
+        if (productId == 0) {
             return PriceMenuCommand.getInstance();
         }
         Price price = PricesRepository.getInstance().get(marketId, productId);

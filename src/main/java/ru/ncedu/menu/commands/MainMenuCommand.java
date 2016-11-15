@@ -31,7 +31,7 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("2", "Products");
         MenuUtils.printOption("3", "Characteristic groups");
         MenuUtils.printOption("4", "Characteristic values");
-        MenuUtils.printOption("7", "Prises");
+        MenuUtils.printOption("7", "Priсes");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
         MenuUtils.printOption("0", "Exit");

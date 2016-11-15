@@ -11,9 +11,12 @@ import java.util.Scanner;
 public class ViewPricesCommand implements Command {
 
     private static ViewPricesCommand instance;
-    private ViewPricesCommand() {}
-    public static synchronized ViewPricesCommand getInstance(){
-        if (instance == null){
+
+    private ViewPricesCommand() {
+    }
+
+    public static synchronized ViewPricesCommand getInstance() {
+        if (instance == null) {
             instance = new ViewPricesCommand();
         }
         return instance;
@@ -25,12 +28,12 @@ public class ViewPricesCommand implements Command {
 
         MenuUtils.printSeparator();
 
-        if (prices.isEmpty()){
+        if (prices.isEmpty()) {
             System.out.println("Price not found");
             return PriceMenuCommand.getInstance();
         }
 
-        for (Price price: prices){
+        for (Price price : prices) {
             System.out.println("Market ID = " + String.valueOf(price.getMarketId()) + "\n" + "Product ID = " + String.valueOf(price.getProductId()) + "\n" + "Amount " + String.valueOf(price.getAmount()) + "\n");
         }
         MenuUtils.printSeparator();

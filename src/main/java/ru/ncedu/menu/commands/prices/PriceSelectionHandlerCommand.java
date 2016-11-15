@@ -7,13 +7,14 @@ public abstract class PriceSelectionHandlerCommand implements Command {
 
     protected Price price;
 
-    public PriceSelectionHandlerCommand() {}
+    public PriceSelectionHandlerCommand() {
+    }
 
-    public PriceSelectionHandlerCommand(Price price){
+    public PriceSelectionHandlerCommand(Price price) {
         this.price = price;
     }
 
-    public void setPriceSelection(Price price){
+    public void setPriceSelection(Price price) {
         this.price = price;
     }
 }

@@ -6,12 +6,14 @@ import ru.ncedu.menu.utils.MenuUtils;
 
 import java.util.Scanner;
 
-public class PriceMenuCommand implements Command{
+public class PriceMenuCommand implements Command {
     private static PriceMenuCommand instance;
-    private PriceMenuCommand() {}
+
+    private PriceMenuCommand() {
+    }
 
 
-    public static synchronized PriceMenuCommand getInstance(){
+    public static synchronized PriceMenuCommand getInstance() {
         if (instance == null) {
             instance = new PriceMenuCommand();
         }
@@ -19,12 +21,12 @@ public class PriceMenuCommand implements Command{
     }
 
     @Override
-    public Command execute(){
+    public Command execute() {
         MenuUtils.printSeparator();
-        MenuUtils.printOption("1", "Add Prise");
-        MenuUtils.printOption("2", "View Prises");
-        MenuUtils.printOption("3", "Edit Prise");
-        MenuUtils.printOption("4", "Delete Prise");
+        MenuUtils.printOption("1", "Add Priсe");
+        MenuUtils.printOption("2", "View Priсes");
+        MenuUtils.printOption("3", "Edit Priсe");
+        MenuUtils.printOption("4", "Delete Priсe");
         MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();

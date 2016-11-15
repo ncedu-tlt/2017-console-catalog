@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class EditPriceCommand extends PriceSelectionHandlerCommand {
 
-    public EditPriceCommand() {}
+    public EditPriceCommand() {
+    }
 
     @Override
     public Command execute() {
