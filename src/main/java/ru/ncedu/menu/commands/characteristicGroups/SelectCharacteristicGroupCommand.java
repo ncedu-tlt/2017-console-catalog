@@ -48,7 +48,7 @@ public class SelectCharacteristicGroupCommand implements Command {
         MenuUtils.printPrompt();
 
         Scanner scanner = new Scanner(System.in);
-        String characteristicGroupId = scanner.next();
+        String characteristicGroupId = scanner.nextLine();
 
         if (characteristicGroupId.equals("0")) {
             return CharacteristicGroupMenuCommand.getInstance();

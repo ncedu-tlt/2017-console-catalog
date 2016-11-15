@@ -27,7 +27,7 @@ public class EditCharacteristicGroupCommand extends CharacteristicGroupSelection
         System.out.println("Enter new characteristic group name:");
         MenuUtils.printPrompt();
 
-        String characteristicGroupName = scanner.next();
+        String characteristicGroupName = scanner.nextLine();
         String errorMessage = validate(characteristicGroupName);
         if (errorMessage != null) {
             MenuUtils.printSeparator();
