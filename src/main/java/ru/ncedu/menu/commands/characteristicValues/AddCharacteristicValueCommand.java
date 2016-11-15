@@ -41,12 +41,14 @@ public final class AddCharacteristicValueCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         long productId;
-        boolean groupIdisCorrect;
-        boolean isCorrectId = false;
-//        if(characteristics.isEmpty()){
-//            System.out.println("Characteristic not found. Create a new characteristic: ");
-//            return AddCharacteristicCommand.getInstance();
-//        }
+        long characterisicId;
+        boolean isCorrectCharacteristicId = false;
+        boolean isCorrectProductId = false;
+
+        if(characteristics.isEmpty()){
+            System.out.println("Characteristic not found. Create a new characteristic: ");
+            return AddCharacteristicCommand.getInstance();
+        }
 
         if(products.isEmpty()){
             System.out.println("Product is empty. Create a new product");
@@ -54,21 +56,34 @@ public final class AddCharacteristicValueCommand implements Command {
         }
 
         do{
+            System.out.println("(Product id) - Product Name");
+            System.out.println("(Characteristic id) - Characteristic Name");
+
             for(Product product : products){
-                MenuUtils.printSeparator();
-                System.out.println(product.getId()+ " - " + product.getName());
+                for(Characteristic characteristic : characteristics) {
+                    MenuUtils.printSeparator();
+                    System.out.println("(" + product.getId() + ") - " + product.getName());
+                    System.out.println("("+characteristic.getId()+") - " + characteristic.getName());
+                }
             }
             MenuUtils.printSeparator();
 
             System.out.println("Chose product id: ");
             productId = Long.parseLong(scanner.nextLine());
+
+            System.out.println("Chose characteristic id: ");
+            characterisicId = Long.parseLong(scanner.nextLine());
+
             for(Product product : products) {
-                isCorrectId = isCorrectProductId(product, productId);
-                if(isCorrectId) break;
-                System.out.println("Your product id is not equal with product.");
+                for(Characteristic characteristic : characteristics) {
+                    isCorrectProductId = isCorrectProductId(product, productId);
+                    isCorrectCharacteristicId = isCorrectCharacteristicId(characteristic, characterisicId);
+                    if (isCorrectProductId && isCorrectCharacteristicId) break;
+                        System.out.println("Your product id is not equal with product.");
+                }
             }
 
-        }while(!isCorrectId);
+        }while(!isCorrectProductId && !isCorrectCharacteristicId);
 
         MenuUtils.printSeparator();
         System.out.println("Add new characteristic value:");
@@ -87,7 +102,7 @@ public final class AddCharacteristicValueCommand implements Command {
         CharacteristicValueRepository.getInstance().
                 add(new CharacteristicValue(productId,characteristicName));;
         MenuUtils.printSeparator();
-        System.out.println("Name of characteristic \"" + characteristicName + "\" had been created!");
+        System.out.println("Value of characteristic \"" + characteristicName + "\" had been created!");
 
         return MainMenuCommand.getInstance();
     }
@@ -104,5 +119,12 @@ public final class AddCharacteristicValueCommand implements Command {
             return true;
     }
             return false;
+    }
+
+    private boolean isCorrectCharacteristicId(Characteristic characteristic, long characteristicId){
+        if(characteristic.getId() == characteristicId){
+            return true;
+        }
+        return false;
     }
 }

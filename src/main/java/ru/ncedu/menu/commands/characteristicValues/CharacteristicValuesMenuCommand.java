@@ -13,7 +13,7 @@ public final class CharacteristicValuesMenuCommand implements Command{
 
     private static CharacteristicValuesMenuCommand instance;
 
-    private CharacteristicValuesMenuCommand(){}
+    CharacteristicValuesMenuCommand(){}
 
     public static synchronized CharacteristicValuesMenuCommand getInstance(){
         if(instance == null){
@@ -28,10 +28,10 @@ public final class CharacteristicValuesMenuCommand implements Command{
     @Override
     public Command execute() {
         MenuUtils.printSeparator();
-        MenuUtils.printOption("1", "View characteristics");
-        MenuUtils.printOption("2", "Add characteristic");
-        MenuUtils.printOption("3", "Edit characteristic");
-        MenuUtils.printOption("4", "Delete characteristic");
+        MenuUtils.printOption("1", "View characteristic values");
+        MenuUtils.printOption("2", "Add characteristic value");
+        MenuUtils.printOption("3", "Edit characteristic value");
+        MenuUtils.printOption("4", "Delete characteristic value");
         MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();

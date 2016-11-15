@@ -44,7 +44,7 @@ public class SelectCharacteristicValueCommand implements Command{
         }
 
         for(CharacteristicValue characteristicValue : characteristicValues){
-            MenuUtils.printOption(String.valueOf(characteristicValue.getCharacteristicId()),
+            MenuUtils.printOption(String.valueOf(characteristicValue.getProductId()),
                     characteristicValue.getValue());
         }
 

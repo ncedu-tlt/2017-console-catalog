@@ -36,12 +36,10 @@ public class EditCharacteristicValue extends CharacteristicValueSelectionHandler
         }
 
         characteristicValue.setValue(valueOfCharacteristic);
-
-        System.out.println(valueOfCharacteristic);
         CharacteristicValueRepository.getInstance().update(characteristicValue);
 
         MenuUtils.printSeparator();
-        System.out.println("Characteristic name had been change");
+        System.out.println("Characteristic value had been change");
         return CharacteristicValuesMenuCommand.getInstance();
     }
 

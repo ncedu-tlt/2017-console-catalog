@@ -31,8 +31,8 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("1", "Categories");
         MenuUtils.printOption("2", "Products");
         MenuUtils.printOption("3", "Characteristic groups");
-        MenuUtils.printOption("4", "Characteristic values");
-        MenuUtils.printOption("5", "Characteristic");
+        MenuUtils.printOption("4", "Characteristic");
+        MenuUtils.printOption("5", "Characteristic values");
         MenuUtils.printOption("7", "Priсes");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
@@ -53,9 +53,9 @@ public class MainMenuCommand implements Command {
             case 3:
                 return CharacteristicGroupMenuCommand.getInstance();
             case 4:
-                return CharacteristicValuesMenuCommand.getInstance();
-            case 5:
                 return CharacteristicMenuCommand.getInstance();
+            case 5:
+                return CharacteristicValuesMenuCommand.getInstance();
             case 7:
                 return PriceMenuCommand.getInstance();
             case 8:

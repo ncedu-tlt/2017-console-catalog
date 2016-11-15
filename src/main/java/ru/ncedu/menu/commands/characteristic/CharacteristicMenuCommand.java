@@ -42,10 +42,10 @@ public class CharacteristicMenuCommand implements Command {
                 return ViewCharacteristicCommand.getInstance();
             case 2:
                 return AddCharacteristicCommand.getInstance();
-            case 3:
-                return new SelectCharacteristicCommand(new EditCharacteristicCommand());
-            case 4:
-                return new SelectCharacteristicCommand(new DeleteCharacteristicCommand());
+//            case 3:
+//                return new SelectCharacteristicCommand(new EditCharacteristicCommand());
+//            case 4:
+//                return new SelectCharacteristicCommand(new DeleteCharacteristicCommand());
             default:
                 System.out.println("Unexcepted command!");
                 return this;
