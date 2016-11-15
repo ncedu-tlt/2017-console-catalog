@@ -25,7 +25,7 @@ public class SaveCommand implements Command {
         CharacteristicValueRepository.getInstance().save();
         ProductsRepository.getInstance().save();
         PricesRepository.getInstance().save();
-
+        CharacteristicRepository.getInstance().save();
 
         MenuUtils.printSeparator();
         System.out.println("All changes have been saved");

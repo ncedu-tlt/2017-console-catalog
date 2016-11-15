@@ -27,6 +27,7 @@ public class LoadCommand implements Command {
         ProductsRepository.getInstance().load();
         PricesRepository.getInstance().load();
         CharacteristicGroupRepository.getInstance().load();
+        CharacteristicRepository.getInstance().load();
 
         MenuUtils.printSeparator();
         System.out.println("All changes have been discarded");
