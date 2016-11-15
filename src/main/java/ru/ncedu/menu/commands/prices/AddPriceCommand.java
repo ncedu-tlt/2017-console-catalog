@@ -1,8 +1,11 @@
 package ru.ncedu.menu.commands.prices;
 
 import ru.ncedu.menu.commands.Command;
+import ru.ncedu.menu.commands.products.AddProductCommand;
 import ru.ncedu.menu.models.Price;
+import ru.ncedu.menu.models.Product;
 import ru.ncedu.menu.repositories.PricesRepository;
+import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
 import java.math.BigDecimal;
@@ -25,9 +28,20 @@ public class AddPriceCommand implements Command{
         return instance;
     }
 
+    public boolean ProductsId(long productsId){
+        boolean result = false;
+        List<Product> products = ProductsRepository.getInstance().get();
+        for (Product product: products){
+            if (product.getId() == productsId) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
     @Override
     public Command execute() {
-
+        boolean notTrue = true;
         Scanner scanner = new Scanner(System.in);
         MenuUtils.printSeparator();
         System.out.println("Create new price");
@@ -36,14 +50,18 @@ public class AddPriceCommand implements Command{
 
         System.out.println("Enter market ID");
         try {
-        long marketIdScan = scanner.nextLong();
+            long marketIdScan = Long.parseLong(scanner.nextLine());
         if (marketIdScan < 0){
             System.out.println("Market ID can't be negative");
             return AddPriceCommand.getInstance();
         }
 
         System.out.println("Enter product ID");
-        long productIdScan = scanner.nextLong();
+        long productIdScan = Long.parseLong(scanner.nextLine());
+            if (ProductsId(productIdScan) == false){
+                System.out.println("Product is not found, create new product");
+                return AddProductCommand.getInstance();
+            }
         if (productIdScan < 0){
             System.out.println("Market ID can't be negative");
             return AddPriceCommand.getInstance();
