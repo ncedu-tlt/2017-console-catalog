@@ -4,6 +4,7 @@ import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
 import ru.ncedu.menu.commands.characteristic.CharacteristicMenuCommand;
 import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupMenuCommand;
 import ru.ncedu.menu.commands.characteristicValues.CharacteristicValuesMenuCommand;
+import ru.ncedu.menu.commands.markets.MarketMenuCommand;
 import ru.ncedu.menu.commands.prices.PriceMenuCommand;
 import ru.ncedu.menu.commands.products.ProductsMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
@@ -33,6 +34,7 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("3", "Characteristic groups");
         MenuUtils.printOption("4", "Characteristic values");
         MenuUtils.printOption("5", "Characteristic");
+        MenuUtils.printOption("6", "Markets");
         MenuUtils.printOption("7", "Priсes");
         MenuUtils.printOption("8", "Save changes");
         MenuUtils.printOption("9", "Discard changes");
@@ -56,6 +58,8 @@ public class MainMenuCommand implements Command {
                 return CharacteristicValuesMenuCommand.getInstance();
             case 5:
                 return CharacteristicMenuCommand.getInstance();
+            case 6:
+                return MarketMenuCommand.getInstance();
             case 7:
                 return PriceMenuCommand.getInstance();
             case 8:
