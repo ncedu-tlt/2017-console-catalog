@@ -35,6 +35,8 @@ public class Category implements Serializable {
         return name;
     }
 
+    public String getName(long id) { return name; }
+
     public void setName(String name) {
         this.name = name;
     }
