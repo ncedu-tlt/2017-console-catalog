@@ -37,7 +37,7 @@ public class DeleteCharacteristicCommand extends CharacteristicSelectionHandlerC
         CharacteristicRepository.getInstance().remove(characteristic);
         MenuUtils.printSeparator();
 
-        System.out.println("Characteristic " + characteristic.getName() + "has been deleted");
+        System.out.println("Characteristic " + characteristic.getName() + " has been deleted");
 
         return MainMenuCommand.getInstance();
     }
