@@ -2,6 +2,7 @@ package ru.ncedu.menu.commands.characteristic;
 
 import org.apache.commons.lang.StringUtils;
 import ru.ncedu.menu.commands.Command;
+import ru.ncedu.menu.commands.MainMenuCommand;
 import ru.ncedu.menu.commands.categories.AddCategoryCommand;
 import ru.ncedu.menu.commands.characteristicGroups.AddCharacteristicGroupCommand;
 import ru.ncedu.menu.models.Category;
@@ -107,7 +108,7 @@ public class AddCharacteristicCommand implements Command {
 
         System.out.println("Characteristic '" + enteredName + "' has been created.");
 
-        return CharacteristicMenuCommand.getInstance();
+        return MainMenuCommand.getInstance();
     }
 
     /**
