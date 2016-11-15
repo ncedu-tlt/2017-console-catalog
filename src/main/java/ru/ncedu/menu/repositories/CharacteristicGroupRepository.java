@@ -4,8 +4,7 @@ import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.utils.JSONUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CharacteristicGroupRepository implements Repository<CharacteristicGroup> {
 
@@ -96,5 +95,20 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         }
 
         return ++id;
+    }
+
+    public List<CharacteristicGroup> getOrdered(){
+        Collections.sort(characteristicGroups, new Comparator<CharacteristicGroup>(){
+            public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
+                if (obj1.getOrderNumber() > obj2.getOrderNumber()) {
+                    return 1;
+                } else if (obj1.getOrderNumber() < obj2.getOrderNumber()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        return characteristicGroups;
     }
 }
