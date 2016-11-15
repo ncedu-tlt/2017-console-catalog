@@ -41,7 +41,6 @@ public class AddPriceCommand implements Command{
 
     @Override
     public Command execute() {
-        boolean notTrue = true;
         Scanner scanner = new Scanner(System.in);
         MenuUtils.printSeparator();
         System.out.println("Create new price");
@@ -58,14 +57,14 @@ public class AddPriceCommand implements Command{
 
         System.out.println("Enter product ID");
         long productIdScan = Long.parseLong(scanner.nextLine());
-            if (ProductsId(productIdScan) == false){
+            if (productIdScan < 0){
+                System.out.println("Market ID can't be negative");
+                return AddPriceCommand.getInstance();
+            }
+            else if (ProductsId(productIdScan) == false){
                 System.out.println("Product is not found, create new product");
                 return AddProductCommand.getInstance();
             }
-        if (productIdScan < 0){
-            System.out.println("Market ID can't be negative");
-            return AddPriceCommand.getInstance();
-        }
 
         System.out.println("Enter amount (Example 0.00)");
             BigDecimal priceValue = scanner.nextBigDecimal();
