@@ -65,6 +65,7 @@ public class CharacteristicRepository implements Repository<Characteristic> {
         if (object == null) return;
 
         Characteristic characteristic = get(object.getId());
+        CharacteristicValueRepository.getInstance().remove(object.getId());
         characteristics.remove(characteristic);
     }
 
