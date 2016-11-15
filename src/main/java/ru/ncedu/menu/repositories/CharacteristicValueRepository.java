@@ -82,6 +82,19 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
 
     }
 
+    public void remove(long characteristicId) {
+        List<CharacteristicValue> characteristicValuesToRemove = new ArrayList<>();
+
+        if (characteristicId == 0) return;
+
+        for (CharacteristicValue characteristicValue: characteristicValues) {
+            if (characteristicValue.getCharacteristicId() == characteristicId) {
+                characteristicValuesToRemove.add(characteristicValue);
+            }
+        }
+        characteristicValues.addAll(characteristicValuesToRemove);
+    }
+
     @Override
     public void save() {
         try {
