@@ -14,7 +14,7 @@ public class DeletePriceCommand extends PriceSelectionHandlerCommand {
     public Command execute() {
         PricesRepository.getInstance().remove(price);
         MenuUtils.printSeparator();
-        System.out.println("Priсe: " + price.getAmount() + "has been deleted");
+        System.out.println("Priсe has been deleted");
         return MainMenuCommand.getInstance();
     }
 
