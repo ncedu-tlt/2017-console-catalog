@@ -2,7 +2,9 @@ package ru.ncedu.menu.commands.prices;
 
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.models.Price;
+import ru.ncedu.menu.models.Product;
 import ru.ncedu.menu.repositories.PricesRepository;
+import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
 import java.util.List;
@@ -25,6 +27,7 @@ public class ViewPricesCommand implements Command {
     @Override
     public Command execute() {
         List<Price> prices = PricesRepository.getInstance().get();
+        List<Product> products = ProductsRepository.getInstance().get();
 
         MenuUtils.printSeparator();
 
@@ -34,11 +37,14 @@ public class ViewPricesCommand implements Command {
         }
 
         for (Price price : prices) {
-            System.out.println("Market ID = " + String.valueOf(price.getMarketId()) + "\n" + "Product ID = " + String.valueOf(price.getProductId()) + "\n" + "Amount " + String.valueOf(price.getAmount()) + "\n");
+            for (Product product : products)
+                if (price.getProductId() == product.getId())
+                    System.out.println("Market ID = " + String.valueOf(price.getMarketId()) + "\n" + "Product ID = " + String.valueOf(price.getProductId()) + " Name: " + product.getName() + "\n" + "Amount " + String.valueOf(price.getAmount()) + "\n");
         }
         MenuUtils.printSeparator();
         System.out.println("Press Enter to continue");
 
+        MenuUtils.printPrompt();
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
 

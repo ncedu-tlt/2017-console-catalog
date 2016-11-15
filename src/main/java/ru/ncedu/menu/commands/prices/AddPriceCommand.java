@@ -18,6 +18,7 @@ public class AddPriceCommand implements Command {
     private static AddPriceCommand instance;
 
     private List<Price> prices = PricesRepository.getInstance().get();
+    private List<Product> products = ProductsRepository.getInstance().get();
 
     private AddPriceCommand() {
     }
@@ -52,6 +53,13 @@ public class AddPriceCommand implements Command {
         long marketIdScan = MenuUtils.getId();
 
         System.out.println("Enter product ID");
+        for (Product product : products) {
+            MenuUtils.printCategorySeparator();
+            System.out.println("Product ID: " + product.getId());
+            System.out.println("Product name: " + product.getName());
+            System.out.println("Product description: ");
+            System.out.println(product.getDescription() + "\n");
+        }
         long productIdScan = MenuUtils.getId();
         if (ProductsId(productIdScan) == false) {
             System.out.println("Product is not found, create new product");
@@ -60,17 +68,19 @@ public class AddPriceCommand implements Command {
 
         System.out.println("Enter amount (Example 0.00)");
         try {
+            MenuUtils.printPrompt();
             BigDecimal priceValue = scanner.nextBigDecimal();
             if (priceValue.signum() <= 0) {
                 System.out.println("Amount can't be negative");
-                return AddPriceCommand.getInstance();
+                return this;
             }
             PricesRepository.getInstance().add(new Price(marketIdScan, productIdScan, priceValue)); /*Вопрос по проверке*/
             MenuUtils.printSeparator();
-            System.out.println("Price " + marketIdScan + " - " + productIdScan + " - " + priceValue + " has been created");
-        } catch (InputMismatchException a) {
+
+            System.out.println("Price: " + "\n" + "Market ID = " + marketIdScan + "\n" + "Product ID = " + productIdScan + "\n" + "Amount = " + priceValue + "\n" + "Has been created");
+        } catch (InputMismatchException e) {
             System.out.println("Incorrect number");
-            return AddPriceCommand.getInstance();
+            return this;
         }
         return PriceMenuCommand.getInstance();
     }
