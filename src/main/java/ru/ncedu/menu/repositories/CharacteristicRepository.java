@@ -69,6 +69,19 @@ public class CharacteristicRepository implements Repository<Characteristic> {
         characteristics.remove(characteristic);
     }
 
+    public void remove(long characteristicGroupId) {
+        List<Characteristic> characteristicToRemove = new ArrayList<>();
+
+        if (characteristicGroupId == 0) return;
+
+        for (Characteristic characteristic: characteristics) {
+            if (characteristic.getGroupId() == characteristicGroupId) {
+                characteristicToRemove.add(characteristic);
+            }
+        }
+        characteristics.addAll(characteristicToRemove);
+    }
+
     @Override
     public void save() {
         try {
