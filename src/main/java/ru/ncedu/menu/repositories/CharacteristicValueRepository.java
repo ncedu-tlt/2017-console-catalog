@@ -1,6 +1,9 @@
 package ru.ncedu.menu.repositories;
 
+import ru.ncedu.menu.models.Characteristic;
+import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.models.CharacteristicValue;
+import ru.ncedu.menu.models.Product;
 import ru.ncedu.menu.utils.JSONUtils;
 
 import java.io.IOException;
@@ -15,7 +18,6 @@ import java.util.List;
 public class CharacteristicValueRepository implements Repository<CharacteristicValue>{
 
     private static final String FILE_NAME = "characteristicValues.json";
-    private static final long START_ID = 1;
 
     private static CharacteristicValueRepository instance;
 
@@ -37,9 +39,21 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
         return characteristicValues;
     }
 
-    public CharacteristicValue get(long id_characteristic){
+//    public CharacteristicValue get(long id_characteristic){
+//        for(CharacteristicValue value : characteristicValues){
+//            if(value.getCharacteristicId() == id_characteristic){
+//                return value;
+//            }
+//        }
+//        return null;
+//    }
+
+    public CharacteristicValue get(long id_product){
+
+        List <CharacteristicValue> characteristicValues = this.get();
+
         for(CharacteristicValue value : characteristicValues){
-            if(value.getCharacteristicId() == id_characteristic){
+            if(value.getProductId() == id_product){
                 return value;
             }
         }
@@ -52,8 +66,8 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
             return null;
 
         CharacteristicValue characteristicValue = new CharacteristicValue(object);
-        characteristicValue.setCharacteristicId(generateId());
-        characteristicValue.setProductId(generateId());
+        characteristicValue.setProductId(characteristicValue.getProductId());
+        characteristicValue.setCharacteristicId(characteristicValue.getCharacteristicId());
 
         characteristicValues.add(characteristicValue);
         return characteristicValue;
@@ -72,14 +86,12 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
     }
 
     @Override
-    public void remove(CharacteristicValue object) {
-        if(object == null)
+    public void remove(CharacteristicValue objectCharacteristicValue) {
+        if(objectCharacteristicValue == null)
             return;
 
-        CharacteristicValue characteristicValue = get(object.getCharacteristicId());
-
+        CharacteristicValue characteristicValue = get(objectCharacteristicValue.getCharacteristicId());
         characteristicValues.remove(characteristicValue);
-
     }
 
     public void remove(long characteristicId) {
@@ -112,14 +124,5 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
             characteristicValues = new ArrayList<>();
             e.printStackTrace();
         }
-    }
-
-    private long generateId() {
-        long id = START_ID;
-        for (CharacteristicValue value : characteristicValues) {
-            id = Math.max(id, value.getCharacteristicId());
-        }
-
-        return ++id;
     }
 }

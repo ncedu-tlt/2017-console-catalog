@@ -68,7 +68,6 @@ public class CategoriesRepository implements Repository<Category> {
 
     @Override
     public void remove(Category object) {
-
         if (object == null) return;
 
         Category category = get(object.getId());

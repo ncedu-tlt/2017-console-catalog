@@ -13,7 +13,7 @@ public final class CharacteristicValuesMenuCommand implements Command{
 
     private static CharacteristicValuesMenuCommand instance;
 
-    CharacteristicValuesMenuCommand(){}
+    private CharacteristicValuesMenuCommand(){}
 
     public static synchronized CharacteristicValuesMenuCommand getInstance(){
         if(instance == null){
@@ -43,13 +43,13 @@ public final class CharacteristicValuesMenuCommand implements Command{
             case 0:
                 return MainMenuCommand.getInstance();
             case 1:
-                return ViewCharacteristicsCommand.getInstance();
+                return ViewCharacteristicValueCommand.getInstance();
             case 2:
-                return AddCharacteristicsCommand.getInstance();
+                return AddCharacteristicValueCommand.getInstance();
             case 3:
-                return new SelectCharacteristicCommand(new EditCharacteristicValue());
-//            case 4:
-//                return SelectCharacteristicCommand.getInstance(new DeleteCharacteristicValue);
+                return new SelectCharacteristicValueCommand(new EditCharacteristicValue());
+            case 4:
+                return new SelectCharacteristicValueCommand(new DeleteCharacteristicValue());
             default:
                 System.out.println("Uknown command");
                 return this;

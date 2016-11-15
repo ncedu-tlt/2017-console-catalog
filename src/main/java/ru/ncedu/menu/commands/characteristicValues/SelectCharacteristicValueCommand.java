@@ -11,14 +11,14 @@ import java.util.Scanner;
 /**
  * Created by Alexander on 13.11.2016.
  */
-public class SelectCharacteristicCommand implements Command{
+public class SelectCharacteristicValueCommand implements Command{
 
     private CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand;
 
-    public SelectCharacteristicCommand() {
+    public SelectCharacteristicValueCommand() {
     }
 
-    public SelectCharacteristicCommand(CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand) {
+    public SelectCharacteristicValueCommand(CharacteristicValueSelectionHandlerCommand characteristicValueSelectionHandlerCommand) {
         this.characteristicValueSelectionHandlerCommand = characteristicValueSelectionHandlerCommand;
     }
 
@@ -63,7 +63,7 @@ public class SelectCharacteristicCommand implements Command{
             long id = Long.parseLong(characteristicId);
             CharacteristicValue characteristicValue = CharacteristicValueRepository.getInstance().get(id);
 
-            if(characteristicValue == null){
+            if(characteristicValue != null){
                 characteristicValueSelectionHandlerCommand.setCharacteristicValue(characteristicValue);
                 return characteristicValueSelectionHandlerCommand;
             }
