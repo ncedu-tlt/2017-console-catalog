@@ -1,5 +1,7 @@
 package ru.ncedu.menu.repositories;
 
+import ru.ncedu.menu.models.Category;
+import ru.ncedu.menu.models.Characteristic;
 import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.utils.JSONUtils;
 
@@ -29,6 +31,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
 
     @Override
     public List<CharacteristicGroup> get() {
+        sortById(characteristicGroups);
         return characteristicGroups;
     }
 
@@ -103,8 +106,24 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         return ++id;
     }
 
-    public List<CharacteristicGroup> getOrdered() {
-        Collections.sort(characteristicGroups, new Comparator<CharacteristicGroup>() {
+    public void sortById(List<CharacteristicGroup> groups) {
+
+        Collections.sort(groups, new Comparator<CharacteristicGroup>() {
+            public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
+                if (obj1.getId() > obj2.getId()) {
+                    return 1;
+                } else if (obj1.getId() < obj2.getId()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+    }
+
+    public void sortByOrderNumber(List<CharacteristicGroup> groups) {
+
+        Collections.sort(groups, new Comparator<CharacteristicGroup>() {
             public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
                 if (obj1.getOrderNumber() > obj2.getOrderNumber()) {
                     return 1;
@@ -115,7 +134,25 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
                 }
             }
         });
+    }
+
+    public List<CharacteristicGroup> getOrdered() {
+        sortByOrderNumber(characteristicGroups);
         return characteristicGroups;
+    }
+
+
+    public List<CharacteristicGroup> getForCategory(Category category) {
+
+        List<Characteristic> characteristics = CharacteristicRepository.getInstance().get();
+        List<CharacteristicGroup> groups = new ArrayList<>();
+        for (Characteristic characteristic : characteristics) {
+            if (characteristic.getCategoryId() == category.getId()) {
+                groups.add(get(characteristic.getGroupId()));
+            }
+        }
+        sortByOrderNumber(groups);
+        return groups;
     }
 
 }
