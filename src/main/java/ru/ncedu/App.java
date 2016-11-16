@@ -7,7 +7,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        // test
         ConsoleMenu menu = new ConsoleMenu(MainMenuCommand.getInstance());
         menu.run();
     }
