@@ -72,6 +72,7 @@ public class CategoriesRepository implements Repository<Category> {
 
         Category category = get(object.getId());
         ProductsRepository.getInstance().remove(object.getId());
+        CharacteristicRepository.getInstance().remove(object.getId());
         categories.remove(category);
     }
 
