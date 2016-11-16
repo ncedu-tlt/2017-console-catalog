@@ -33,9 +33,11 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("3", "Characteristic groups");
         MenuUtils.printOption("4", "Characteristic values");
         MenuUtils.printOption("5", "Characteristic");
-        MenuUtils.printOption("7", "Priсes");
-        MenuUtils.printOption("8", "Save changes");
-        MenuUtils.printOption("9", "Discard changes");
+        MenuUtils.printOption("6", "Priсes");
+        MenuUtils.printOption("7", "Save changes");
+        MenuUtils.printOption("8", "Discard changes");
+        MenuUtils.printOption("9", "Export to XML");
+        MenuUtils.printOption("10", "Import from XML");
         MenuUtils.printOption("0", "Exit");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
@@ -56,12 +58,16 @@ public class MainMenuCommand implements Command {
                 return CharacteristicValuesMenuCommand.getInstance();
             case 5:
                 return CharacteristicMenuCommand.getInstance();
-            case 7:
+            case 6:
                 return PriceMenuCommand.getInstance();
-            case 8:
+            case 7:
                 return SaveCommand.getInstance();
-            case 9:
+            case 8:
                 return LoadCommand.getInstance();
+            case 9:
+                return ExportCommand.getInstance();
+            case 10:
+                return ImportCommand.getInstance();
             default:
                 System.out.println("Unexpected command!");
                 return this;
