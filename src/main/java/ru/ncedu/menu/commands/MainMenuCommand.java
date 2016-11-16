@@ -11,10 +11,10 @@ import ru.ncedu.menu.utils.MenuUtils;
 import java.util.Scanner;
 
 public class MainMenuCommand implements Command {
-    
+
     private static MainMenuCommand instance;
-    
-    private MainMenuCommand() {   
+
+    private MainMenuCommand() {
     }
 
     public static synchronized MainMenuCommand getInstance() {
@@ -30,9 +30,9 @@ public class MainMenuCommand implements Command {
         MenuUtils.printSeparator();
         MenuUtils.printOption("1", "Categories");
         MenuUtils.printOption("2", "Products");
-        MenuUtils.printOption("3", "Characteristic groups");
-        MenuUtils.printOption("4", "Characteristic values");
-        MenuUtils.printOption("5", "Characteristic");
+        MenuUtils.printOption("3", "Characteristic");
+        MenuUtils.printOption("4", "Characteristic groups");
+        MenuUtils.printOption("5", "Characteristic values");
         MenuUtils.printOption("6", "Priсes");
         MenuUtils.printOption("7", "Save changes");
         MenuUtils.printOption("8", "Discard changes");
@@ -53,11 +53,11 @@ public class MainMenuCommand implements Command {
             case 2:
                 return ProductsMenuCommand.getInstance();
             case 3:
-                return CharacteristicGroupMenuCommand.getInstance();
-            case 4:
-                return CharacteristicValuesMenuCommand.getInstance();
-            case 5:
                 return CharacteristicMenuCommand.getInstance();
+            case 4:
+                return CharacteristicGroupMenuCommand.getInstance();
+            case 5:
+                return CharacteristicValuesMenuCommand.getInstance();
             case 6:
                 return PriceMenuCommand.getInstance();
             case 7:
@@ -74,5 +74,5 @@ public class MainMenuCommand implements Command {
         }
     }
 
-    
+
 }
