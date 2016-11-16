@@ -31,13 +31,6 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("1", "Categories");
         MenuUtils.printOption("2", "Products");
         MenuUtils.printOption("3", "Characteristic groups");
-<<<<<<< HEAD
-        MenuUtils.printOption("4", "Characteristic");
-        MenuUtils.printOption("5", "Characteristic values");
-        MenuUtils.printOption("7", "Priсes");
-        MenuUtils.printOption("8", "Save changes");
-        MenuUtils.printOption("9", "Discard changes");
-=======
         MenuUtils.printOption("4", "Characteristic values");
         MenuUtils.printOption("5", "Characteristic");
         MenuUtils.printOption("6", "Priсes");
@@ -45,7 +38,6 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("8", "Discard changes");
         MenuUtils.printOption("9", "Export to XML");
         MenuUtils.printOption("10", "Import from XML");
->>>>>>> 6c0b1f4680ac67171d484647e121225a2cedf622
         MenuUtils.printOption("0", "Exit");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
@@ -63,14 +55,10 @@ public class MainMenuCommand implements Command {
             case 3:
                 return CharacteristicGroupMenuCommand.getInstance();
             case 4:
-                return CharacteristicMenuCommand.getInstance();
-<<<<<<< HEAD
-            case 5:
                 return CharacteristicValuesMenuCommand.getInstance();
-            case 7:
-=======
+            case 5:
+                return CharacteristicMenuCommand.getInstance();
             case 6:
->>>>>>> 6c0b1f4680ac67171d484647e121225a2cedf622
                 return PriceMenuCommand.getInstance();
             case 7:
                 return SaveCommand.getInstance();
