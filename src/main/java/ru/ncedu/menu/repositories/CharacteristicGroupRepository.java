@@ -16,7 +16,8 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
 
     private List<CharacteristicGroup> characteristicGroups;
 
-    private CharacteristicGroupRepository() {}
+    private CharacteristicGroupRepository() {
+    }
 
     public static synchronized CharacteristicGroupRepository getInstance() {
         if (instance == null) {
@@ -27,7 +28,10 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
     }
 
     @Override
-    public List<CharacteristicGroup> get() {return characteristicGroups;}
+    public List<CharacteristicGroup> get() {
+        return characteristicGroups;
+    }
+
     public CharacteristicGroup get(long id) {
         for (CharacteristicGroup characteristicGroup : characteristicGroups) {
             if (characteristicGroup.getId() == id) {
@@ -36,6 +40,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         }
         return null;
     }
+
     @Override
     public CharacteristicGroup add(CharacteristicGroup object) {
 
@@ -65,6 +70,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         if (object == null) return;
 
         CharacteristicGroup characteristicGroup = get(object.getId());
+        CharacteristicRepository.getInstance().remove(object.getId());
         characteristicGroups.remove(characteristicGroup);
     }
 
@@ -97,8 +103,8 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         return ++id;
     }
 
-    public List<CharacteristicGroup> getOrdered(){
-        Collections.sort(characteristicGroups, new Comparator<CharacteristicGroup>(){
+    public List<CharacteristicGroup> getOrdered() {
+        Collections.sort(characteristicGroups, new Comparator<CharacteristicGroup>() {
             public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
                 if (obj1.getOrderNumber() > obj2.getOrderNumber()) {
                     return 1;
@@ -111,4 +117,5 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         });
         return characteristicGroups;
     }
+
 }

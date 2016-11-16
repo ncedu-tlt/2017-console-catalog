@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CharacteristicGroup implements Serializable {
     private long id;
     private String name;
-    private long orderNumber = 0;
+    private long orderNumber;
 
     public CharacteristicGroup() {
     }
@@ -19,6 +19,11 @@ public class CharacteristicGroup implements Serializable {
         this.name = name;
     }
 
+    public CharacteristicGroup(String name, long orderNumber) {
+        this.name = name;
+        this.orderNumber = orderNumber;
+    }
+
     public CharacteristicGroup(long id, String name, long orderNumber) {
         this.id = id;
         this.name = name;
@@ -26,14 +31,10 @@ public class CharacteristicGroup implements Serializable {
     }
 
     public CharacteristicGroup(CharacteristicGroup characteristicGroup) {
-        this(characteristicGroup.getId(), characteristicGroup.getName());
+        this(characteristicGroup.getId(), characteristicGroup.getName(), characteristicGroup.getOrderNumber());
     }
 
     public String getName() {
-        return name;
-    }
-
-    public String getName(long id) {
         return name;
     }
 
