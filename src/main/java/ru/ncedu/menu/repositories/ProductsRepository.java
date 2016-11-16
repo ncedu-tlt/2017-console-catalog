@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ProductsRepository implements Repository<Product> {
     private static final String FILE_NAME = "products.json";
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static ProductsRepository instance;
 

@@ -10,7 +10,7 @@ public class MarketRepository implements Repository<Market> {
 
     private static final String FILE_NAME = "markets.json";
     private List<Market> markets;
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static MarketRepository instance;
 
