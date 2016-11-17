@@ -7,12 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by UserOne on 12.11.2016.
- */
 public class ProductsRepository implements Repository<Product> {
     private static final String FILE_NAME = "products.json";
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static ProductsRepository instance;
 

@@ -38,12 +38,17 @@ public class AddCharacteristicGroupCommand implements Command {
             return this;
         }
 
-        CharacteristicGroupRepository.getInstance().add(new CharacteristicGroup(characteristicGroupName));
+        MenuUtils.printSeparator();
+        System.out.println("Enter order number or 0 for default value:");
+
+        long orderNumber = MenuUtils.getLong();
+
+        CharacteristicGroupRepository.getInstance().add(new CharacteristicGroup(characteristicGroupName, orderNumber));
 
         MenuUtils.printSeparator();
         System.out.println("Characteristic group '" + characteristicGroupName + "' has been created");
         
-        return CharacteristicGroupMenuCommand.getInstance();
+        return MainMenuCommand.getInstance();
     }
 
     /**

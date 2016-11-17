@@ -10,7 +10,7 @@ import java.util.List;
 public class CharacteristicRepository implements Repository<Characteristic> {
 
     private static final String FILE_NAME = "characteristics.json";
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static CharacteristicRepository instance;
 

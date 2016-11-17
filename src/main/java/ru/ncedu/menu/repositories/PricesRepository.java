@@ -71,6 +71,19 @@ public class PricesRepository implements Repository<Price> {
         prices.remove(price);
     }
 
+    public void remove(long marketId) {
+        List<Price> priceToRemove = new ArrayList<>();
+
+        if (marketId == 0) return;
+
+        for (Price price: prices) {
+            if (price.getMarketId() == marketId) {
+                priceToRemove.add(price);
+            }
+        }
+        prices.addAll(priceToRemove);
+    }
+
     @Override
     public void save() {
         try {
@@ -84,9 +97,9 @@ public class PricesRepository implements Repository<Price> {
     public void load() {
         try {
             prices = JSONUtils.readListFromFile(FILE_NAME, Price.class);
-        } catch (IOException IOE) {
+        } catch (IOException e) {
             prices = new ArrayList<>();
-            IOE.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

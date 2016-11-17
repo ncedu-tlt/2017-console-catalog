@@ -26,7 +26,8 @@ public class CharacteristicGroupMenuCommand implements Command {
         MenuUtils.printOption("1", "View characteristic groups");
         MenuUtils.printOption("2", "Add characteristic group");
         MenuUtils.printOption("3", "Edit characteristic group");
-        MenuUtils.printOption("4", "Delete characteristic group");
+        MenuUtils.printOption("4", "Edit order number");
+        MenuUtils.printOption("5", "Delete characteristic group");
         MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
@@ -44,6 +45,8 @@ public class CharacteristicGroupMenuCommand implements Command {
             case 3:
                 return new SelectCharacteristicGroupCommand(new EditCharacteristicGroupCommand());
             case 4:
+                return new SelectCharacteristicGroupCommand(new EditOrderNumberCommand());
+            case 5:
                 return new SelectCharacteristicGroupCommand(new DeleteCharacteristicGroupCommand());
             default:
                 System.out.println("Unexpected command!");

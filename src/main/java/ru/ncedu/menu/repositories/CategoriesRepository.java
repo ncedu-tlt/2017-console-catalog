@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoriesRepository implements Repository<Category> {
 
     private static final String FILE_NAME = "categories.json";
-    private static final long START_ID = 1;
+    private static final long START_ID = 0;
 
     private static CategoriesRepository instance;
 
@@ -72,6 +72,7 @@ public class CategoriesRepository implements Repository<Category> {
 
         Category category = get(object.getId());
         ProductsRepository.getInstance().remove(object.getId());
+        CharacteristicRepository.getInstance().remove(object.getId());
         categories.remove(category);
     }
 

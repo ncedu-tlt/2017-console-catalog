@@ -40,7 +40,12 @@ public class SelectPriceCommand implements Command {
         }
         MenuUtils.printOption("0", "Back");
         MenuUtils.printSeparator();
+        MenuUtils.printPrompt();
         Scanner scanner = new Scanner(System.in);
+        String priceNum = scanner.nextLine();
+        if (priceNum.trim().equals("0")) {
+            return PriceMenuCommand.getInstance();
+        }
         System.out.println("Enter market ID");
         long marketId = MenuUtils.getId();
         System.out.println("Enter product ID");

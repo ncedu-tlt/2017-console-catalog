@@ -1,7 +1,6 @@
 package ru.ncedu.menu.commands.characteristicGroups;
 
 import ru.ncedu.menu.commands.Command;
-import ru.ncedu.menu.commands.MainMenuCommand;
 import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.repositories.CharacteristicGroupRepository;
 import ru.ncedu.menu.utils.MenuUtils;

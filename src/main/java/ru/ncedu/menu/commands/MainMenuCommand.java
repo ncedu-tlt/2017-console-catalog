@@ -4,6 +4,7 @@ import ru.ncedu.menu.commands.categories.CategoriesMenuCommand;
 import ru.ncedu.menu.commands.characteristic.CharacteristicMenuCommand;
 import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupMenuCommand;
 import ru.ncedu.menu.commands.characteristicValues.CharacteristicValuesMenuCommand;
+import ru.ncedu.menu.commands.markets.MarketMenuCommand;
 import ru.ncedu.menu.commands.prices.PriceMenuCommand;
 import ru.ncedu.menu.commands.products.ProductsMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
@@ -34,10 +35,11 @@ public class MainMenuCommand implements Command {
         MenuUtils.printOption("4", "Characteristic values");
         MenuUtils.printOption("5", "Characteristic");
         MenuUtils.printOption("6", "Priсes");
-        MenuUtils.printOption("7", "Save changes");
-        MenuUtils.printOption("8", "Discard changes");
-        MenuUtils.printOption("9", "Export to XML");
-        MenuUtils.printOption("10", "Import from XML");
+        MenuUtils.printOption("7", "Markets");
+        MenuUtils.printOption("8", "Save changes");
+        MenuUtils.printOption("9", "Discard changes");
+        MenuUtils.printOption("10", "Export to XML");
+        MenuUtils.printOption("11", "Import from XML");
         MenuUtils.printOption("0", "Exit");
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
@@ -61,12 +63,14 @@ public class MainMenuCommand implements Command {
             case 6:
                 return PriceMenuCommand.getInstance();
             case 7:
-                return SaveCommand.getInstance();
+                return MarketMenuCommand.getInstance();
             case 8:
-                return LoadCommand.getInstance();
+                return SaveCommand.getInstance();
             case 9:
-                return ExportCommand.getInstance();
+                return LoadCommand.getInstance();
             case 10:
+                return ExportCommand.getInstance();
+            case 11:
                 return ImportCommand.getInstance();
             default:
                 System.out.println("Unexpected command!");
