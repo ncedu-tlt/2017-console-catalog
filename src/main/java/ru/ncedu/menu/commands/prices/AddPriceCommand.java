@@ -3,9 +3,11 @@ package ru.ncedu.menu.commands.prices;
 import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.markets.AddMarketCommand;
 import ru.ncedu.menu.commands.products.AddProductCommand;
+import ru.ncedu.menu.models.Category;
 import ru.ncedu.menu.models.Market;
 import ru.ncedu.menu.models.Price;
 import ru.ncedu.menu.models.Product;
+import ru.ncedu.menu.repositories.CategoriesRepository;
 import ru.ncedu.menu.repositories.MarketRepository;
 import ru.ncedu.menu.repositories.PricesRepository;
 import ru.ncedu.menu.repositories.ProductsRepository;
@@ -23,6 +25,7 @@ public class AddPriceCommand implements Command {
     private List<Price> prices = PricesRepository.getInstance().get();
     private List<Product> products = ProductsRepository.getInstance().get();
     private List<Market> markets = MarketRepository.getInstance().get();
+    private List<Category> categories = CategoriesRepository.getInstance().get();
 
     private AddPriceCommand() {
     }
@@ -64,7 +67,7 @@ public class AddPriceCommand implements Command {
 
         System.out.println("Enter market ID");
         for (Market market : markets) {
-            MenuUtils.printSeparator();
+            MenuUtils.printCategorySeparator();
             System.out.println("Market ID: " + market.getId());
             System.out.println("Market name: " + market.getName() + "\n");
         }
@@ -75,17 +78,24 @@ public class AddPriceCommand implements Command {
             MenuUtils.printSeparator();
         } else {
             MenuUtils.printSeparator();
-            System.out.println("Market ID isn't found, create new product");
+            System.out.println("Market ID isn't found, create new market");
             return AddMarketCommand.getInstance();
         }
 
         System.out.println("Enter product ID");
-        for (Product product : products) {
-            MenuUtils.printCategorySeparator();
-            System.out.println("Product ID: " + product.getId());
-            System.out.println("Product name: " + product.getName());
-            System.out.println("Product description: ");
-            System.out.println(product.getDescription() + "\n");
+        for (Category category : categories) {
+            long categoryId = category.getId();
+            for (Product product : products) {
+                if (product.getCategoryId() == categoryId) {
+                    MenuUtils.printCategorySeparator();
+                    System.out.println("Category: " + category.getName());
+                    System.out.println("Product ID: " + product.getId());
+                    System.out.println("Product name: " + product.getName());
+                    System.out.println("Product description: ");
+                    System.out.println(product.getDescription() + "\n");
+
+                }
+            }
         }
         long productIdScan = MenuUtils.getId();
         if (productsId(productIdScan)) {
@@ -93,6 +103,7 @@ public class AddPriceCommand implements Command {
             System.out.println("Product ID found");
             MenuUtils.printSeparator();
         } else {
+            MenuUtils.printSeparator();
             System.out.println("Product ID isn't found, create new product");
             return AddProductCommand.getInstance();
         }
@@ -102,10 +113,11 @@ public class AddPriceCommand implements Command {
             MenuUtils.printPrompt();
             BigDecimal priceValue = scanner.nextBigDecimal();
             if (priceValue.signum() <= 0) {
+                MenuUtils.printSeparator();
                 System.out.println("Amount can't be negative");
                 return this;
             }
-            PricesRepository.getInstance().add(new Price(marketIdScan, productIdScan, priceValue)); /*Вопрос по проверке*/
+            PricesRepository.getInstance().add(new Price(marketIdScan, productIdScan, priceValue));
             MenuUtils.printSeparator();
 
             System.out.println("Price: " + "\n" + "Market ID = " + marketIdScan + "\n" + "Product ID = " + productIdScan + "\n" + "Amount = " + priceValue + "\n" + "Has been created");

@@ -84,9 +84,9 @@ public class PricesRepository implements Repository<Price> {
     public void load() {
         try {
             prices = JSONUtils.readListFromFile(FILE_NAME, Price.class);
-        } catch (IOException IOE) {
+        } catch (IOException e) {
             prices = new ArrayList<>();
-            IOE.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

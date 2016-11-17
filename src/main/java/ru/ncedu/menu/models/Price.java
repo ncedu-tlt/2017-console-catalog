@@ -9,10 +9,9 @@ public class Price implements Serializable {
     private long productId;
     private BigDecimal amount;
 
-    public Price() {
-    }
+    private Price() {}
 
-    public Price (BigDecimal amount){
+    private Price (BigDecimal amount){
         this.amount = amount;
     }
 
