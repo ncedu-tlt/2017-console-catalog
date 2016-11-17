@@ -1,5 +1,7 @@
 package ru.ncedu.menu.models;
 
+import javax.xml.bind.annotation.XmlElement;
+
 public class Market {
 
     private long id;
@@ -24,7 +26,7 @@ public class Market {
     public long getId() {
         return id;
     }
-
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -32,7 +34,7 @@ public class Market {
     public String getName() {
         return name;
     }
-
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }

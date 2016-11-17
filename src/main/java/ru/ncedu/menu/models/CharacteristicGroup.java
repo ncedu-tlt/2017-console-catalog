@@ -1,5 +1,6 @@
 package ru.ncedu.menu.models;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
 
 public class CharacteristicGroup implements Serializable {
@@ -36,7 +37,7 @@ public class CharacteristicGroup implements Serializable {
     public String getName(long id) {
         return name;
     }
-
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -44,11 +45,11 @@ public class CharacteristicGroup implements Serializable {
     public long getId() {
         return id;
     }
-
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
-
+    @XmlElement
     public long getOrderNumber() {
         return orderNumber;
     }
