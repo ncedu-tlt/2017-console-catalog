@@ -1,9 +1,12 @@
 package ru.ncedu.menu.commands.prices;
 
 import ru.ncedu.menu.commands.Command;
+import ru.ncedu.menu.commands.markets.AddMarketCommand;
 import ru.ncedu.menu.commands.products.AddProductCommand;
+import ru.ncedu.menu.models.Market;
 import ru.ncedu.menu.models.Price;
 import ru.ncedu.menu.models.Product;
+import ru.ncedu.menu.repositories.MarketRepository;
 import ru.ncedu.menu.repositories.PricesRepository;
 import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
@@ -19,6 +22,7 @@ public class AddPriceCommand implements Command {
 
     private List<Price> prices = PricesRepository.getInstance().get();
     private List<Product> products = ProductsRepository.getInstance().get();
+    private List<Market> markets = MarketRepository.getInstance().get();
 
     private AddPriceCommand() {
     }
@@ -30,11 +34,20 @@ public class AddPriceCommand implements Command {
         return instance;
     }
 
-    public boolean ProductsId(long productsId) {
+    private boolean productsId(long productsId) {
         boolean result = false;
-        List<Product> products = ProductsRepository.getInstance().get();
         for (Product product : products) {
             if (product.getId() == productsId) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    private boolean marketId(long marketId) {
+        boolean result = false;
+        for (Market market : markets) {
+            if (market.getId() == marketId) {
                 result = true;
             }
         }
@@ -50,7 +63,21 @@ public class AddPriceCommand implements Command {
         MenuUtils.printSeparator();
 
         System.out.println("Enter market ID");
+        for (Market market : markets) {
+            MenuUtils.printSeparator();
+            System.out.println("Market ID: " + market.getId());
+            System.out.println("Market name: " + market.getName() + "\n");
+        }
         long marketIdScan = MenuUtils.getId();
+        if (marketId(marketIdScan)) {
+            MenuUtils.printSeparator();
+            System.out.println("Market ID found");
+            MenuUtils.printSeparator();
+        } else {
+            MenuUtils.printSeparator();
+            System.out.println("Market ID isn't found, create new product");
+            return AddMarketCommand.getInstance();
+        }
 
         System.out.println("Enter product ID");
         for (Product product : products) {
@@ -61,8 +88,12 @@ public class AddPriceCommand implements Command {
             System.out.println(product.getDescription() + "\n");
         }
         long productIdScan = MenuUtils.getId();
-        if (ProductsId(productIdScan) == false) {
-            System.out.println("Product is not found, create new product");
+        if (productsId(productIdScan)) {
+            MenuUtils.printSeparator();
+            System.out.println("Product ID found");
+            MenuUtils.printSeparator();
+        } else {
+            System.out.println("Product ID isn't found, create new product");
             return AddProductCommand.getInstance();
         }
 
