@@ -6,6 +6,7 @@ public class Market {
 
     private long id;
     private String name;
+    private long priceId;
 
     public Market() { }
 
@@ -37,5 +38,13 @@ public class Market {
     @XmlElement
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getPriceId() {
+        return priceId;
+    }
+    @XmlElement
+    public void setPriceId(long priceId) {
+        this.priceId = priceId;
     }
 }
