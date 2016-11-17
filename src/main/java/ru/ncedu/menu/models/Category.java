@@ -1,7 +1,7 @@
 package ru.ncedu.menu.models;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
-
 public class Category implements Serializable {
 
     private long id;
@@ -26,7 +26,7 @@ public class Category implements Serializable {
     public long getId() {
         return id;
     }
-
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -36,7 +36,7 @@ public class Category implements Serializable {
     }
 
     public String getName(long id) { return name; }
-
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }

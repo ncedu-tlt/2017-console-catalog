@@ -1,5 +1,6 @@
 package ru.ncedu.menu.models;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
 
 public class Characteristic implements Serializable {
@@ -32,7 +33,7 @@ public class Characteristic implements Serializable {
     public long getId() {
         return id;
     }
-
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -40,7 +41,7 @@ public class Characteristic implements Serializable {
     public String getName() {
         return name;
     }
-
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -48,7 +49,7 @@ public class Characteristic implements Serializable {
     public long getCategoryId() {
         return categoryId;
     }
-
+    @XmlElement
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
@@ -56,7 +57,7 @@ public class Characteristic implements Serializable {
     public long getGroupId() {
         return groupId;
     }
-
+    @XmlElement
     public void setGroupId(long groupId) {
         this.groupId = groupId;
     }

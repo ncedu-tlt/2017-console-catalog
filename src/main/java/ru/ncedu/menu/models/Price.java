@@ -1,5 +1,6 @@
 package ru.ncedu.menu.models;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -33,15 +34,15 @@ public class Price implements Serializable {
     public BigDecimal getAmount() {
         return amount;
     }
-
+    @XmlElement
     public void setMarketId(long marketId) {
         this.marketId = marketId;
     }
-
+    @XmlElement
     public void setProductId(long productId) {
         this.productId = productId;
     }
-
+    @XmlElement
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
