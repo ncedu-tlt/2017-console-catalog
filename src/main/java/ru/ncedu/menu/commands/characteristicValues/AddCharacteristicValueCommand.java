@@ -46,12 +46,10 @@ public final class AddCharacteristicValueCommand implements Command {
         boolean isCorrectProductId;
 
         if(characteristics.isEmpty()){
-            System.out.println("Characteristic not found. Create a new characteristic: ");
             return AddCharacteristicCommand.getInstance();
         }
 
         if(products.isEmpty()){
-            System.out.println("Product is empty. Create a new product");
             return AddProductCommand.getInstance();
         }
 
@@ -69,7 +67,6 @@ public final class AddCharacteristicValueCommand implements Command {
                     else
                         System.out.println("No found characteristic");
                 }
-                MenuUtils.printSeparator();
                 MenuUtils.printSeparator();
             }
 

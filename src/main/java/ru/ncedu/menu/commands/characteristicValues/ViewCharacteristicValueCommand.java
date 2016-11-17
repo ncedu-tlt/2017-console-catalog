@@ -8,6 +8,7 @@ import ru.ncedu.menu.repositories.CharacteristicValueRepository;
 import ru.ncedu.menu.repositories.ProductsRepository;
 import ru.ncedu.menu.utils.MenuUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,14 +19,14 @@ import java.util.Scanner;
 public final class ViewCharacteristicValueCommand implements Command{
 
     private static ViewCharacteristicValueCommand instance;
-    private String productName;
     private ViewCharacteristicValueCommand(){}
-
     public static ViewCharacteristicValueCommand getInstance(){
         if(instance == null)
             instance = new ViewCharacteristicValueCommand();
         return instance;
     }
+
+    private List<String> productNames;
 
     @Override
     public Command execute() {
@@ -38,18 +39,19 @@ public final class ViewCharacteristicValueCommand implements Command{
             CharacteristicValuesMenuCommand.getInstance();
         }
 
-        for(CharacteristicValue characteristicValue : characteristicValues){
+        productNames = getProduct(characteristicValues);
 
-            productName = getProduct(characteristicValues);
+        for(String productName : productNames) {
 
-            if(productName != null) {
-                MenuUtils.printOption(productName,
-                        String.valueOf(characteristicValue.getValue()));
-            }
-            else{
-                System.out.println("Uknown error");
-                return MainMenuCommand.getInstance();
-            }
+            for(CharacteristicValue characteristicValue : characteristicValues){
+                    if (productName != null) {
+                        MenuUtils.printOption(productName,
+                                String.valueOf(characteristicValue.getValue()));
+                    } else {
+                        System.out.println("Uknown error");
+                        return MainMenuCommand.getInstance();
+                    }
+                }
         }
 
         MenuUtils.printSeparator();
@@ -61,16 +63,15 @@ public final class ViewCharacteristicValueCommand implements Command{
         return CharacteristicValuesMenuCommand.getInstance();
     }
 
-    private String getProduct(List<CharacteristicValue> characteristicValue){
+    private List<String> getProduct(List<CharacteristicValue> characteristicValue){
+
+        List<String> productElements = new ArrayList<>();
 
         List <Product> products = ProductsRepository.getInstance().get();
         for(Product product : products){
-            for(CharacteristicValue value : characteristicValue){
-                if(product.getId() == value.getProductId()){
-                    return "Product \""+product.getName()+"\" ";
-                }
-            }
+                productElements.add("Product \""+product.getName()+"\" ");
         }
-        return null;
+
+        return productElements;
     }
 }
