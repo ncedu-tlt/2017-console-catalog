@@ -15,6 +15,9 @@ public class ExportUtil {
     private CharacteristicValueExport characteristicValueExport;
     private CharacteristicGroupExport characteristicGroupExport;
     private CharacteristicExport characteristicExport;
+    public ExportUtil(){
+
+    }
 
     public CharacteristicExport getCharacteristicExport() {
         return characteristicExport;

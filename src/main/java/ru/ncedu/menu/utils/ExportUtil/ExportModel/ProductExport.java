@@ -10,6 +10,8 @@ public class ProductExport {
 
     private List<Product> products;
 
+    public ProductExport(){}
+
     public ProductExport(List<Product> products) {
         this.products = products;
     }

@@ -9,13 +9,18 @@ public class CategoryExport {
 
     private List<Category> categories;
 
-    public List<Category> getCategories() {
-        return categories;
+    public CategoryExport() {
     }
 
     public CategoryExport(List<Category> categories) {
         this.categories = categories;
     }
+
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
 
     @XmlElement(name = "Category")
     public void setCategories(List<Category> categories) {

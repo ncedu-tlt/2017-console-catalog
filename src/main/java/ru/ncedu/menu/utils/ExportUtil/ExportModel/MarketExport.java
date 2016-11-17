@@ -8,9 +8,13 @@ import java.util.List;
 public class MarketExport {
     private List<Market> markets;
 
+    public MarketExport() {
+    }
+
     public List<Market> getMarkets() {
         return markets;
     }
+
     @XmlElement(name = "Market")
     public void setMarkets(List<Market> markets) {
         this.markets = markets;

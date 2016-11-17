@@ -6,8 +6,9 @@ import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 public class CharacteristicGroupExport {
-    List<CharacteristicGroup> characteristicGroups;
+    private List<CharacteristicGroup> characteristicGroups;
 
+    private CharacteristicGroupExport(){}
     public CharacteristicGroupExport(List<CharacteristicGroup> characteristicGroups) {
         this.characteristicGroups = characteristicGroups;
     }

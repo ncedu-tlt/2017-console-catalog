@@ -9,6 +9,8 @@ public class PriceExport {
 
     private List<Price> prices;
 
+    private PriceExport(){}
+
     public PriceExport(List<Price> prices) {
         this.prices = prices;
     }

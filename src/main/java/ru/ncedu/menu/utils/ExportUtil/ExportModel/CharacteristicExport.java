@@ -8,6 +8,8 @@ import java.util.List;
 public class CharacteristicExport {
     private List<Characteristic> characteristics;
 
+    public CharacteristicExport(){}
+
     public CharacteristicExport(List<Characteristic> characteristics) {
         this.characteristics = characteristics;
     }
