@@ -25,7 +25,6 @@ public class ImportCommand implements Command {
 
     @Override
     public Command execute() {
-        String path;
         ExportUtil importsCatalog;
         boolean updateData = false;
 
@@ -33,12 +32,19 @@ public class ImportCommand implements Command {
 
 
         MenuUtils.printCategorySeparator();
-        System.out.println("Please Enter path for import file.");
+        System.out.println("Please Enter import path(where do we must load?)");
         MenuUtils.printPrompt();
-        path = scanner.nextLine();
+        String path = scanner.nextLine();
+
+        // Сюда нужен какой-то способ вывода в консоль имеющихся файлов в path
+
+        MenuUtils.printCategorySeparator();
+        System.out.println("Please Enter file name.(Not using .XML)");
+        MenuUtils.printPrompt();
+        String fileName = scanner.nextLine();
 
         if (path.isEmpty()) {
-            System.out.println("Choice real path to import file!");
+            System.out.println("Entered path or file name is incorrect. Please try again");
             return this;
         }
 
@@ -50,7 +56,7 @@ public class ImportCommand implements Command {
             updateData = true;
         }
 
-        File file = new File(path);
+        File file = new File(path + "/" + fileName + ".xml");
 
 
         try {
