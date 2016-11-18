@@ -71,9 +71,10 @@ public class MarketRepository implements Repository<Market> {
         if (object == null) return;
 
         Market market = get(object.getId());
-        //MarketRepository.getInstance().remove(object.getId());
+        PricesRepository.getInstance().remove(object.getId());
         markets.remove(market);
     }
+
 
     @Override
     public void save() {
