@@ -21,7 +21,7 @@ public class CategoryImportUtil  implements Import{
 
     public void setInRepository() {
         List<Category> categoriesInRepository = CategoriesRepository.getInstance().get();
-        List<Category> updateCategory = new ArrayList<>();
+        List<Category> updateCategory = new ArrayList<>(); // TODO: updateCategories
 
         if (!categoriesInRepository.isEmpty()) {
             for (Category categoryInRepository : categoriesInRepository) {
@@ -31,7 +31,7 @@ public class CategoryImportUtil  implements Import{
                     }
                 }
             }
-            if (!updateCategory.isEmpty() && updatingCategory) {
+            if (!updateCategory.isEmpty() && updatingCategory) { // TODO: следовало проверить еще в первом условии
                 for (Category category : updateCategory) {
                     CategoriesRepository.getInstance().update(category);
                 }
@@ -42,7 +42,7 @@ public class CategoryImportUtil  implements Import{
                     CategoriesRepository.getInstance().add(category);
                 }
             }
-        } else if (categoriesInRepository.isEmpty() && !categories.isEmpty()) {
+        } else if (categoriesInRepository.isEmpty() && !categories.isEmpty()) { //TODO: зачем еще раз проверять categoriesInRepository на пустоту?
             for (Category category : categories) {
                 CategoriesRepository.getInstance().add(category);
             }

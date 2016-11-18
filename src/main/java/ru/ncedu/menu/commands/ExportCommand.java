@@ -1,8 +1,8 @@
 package ru.ncedu.menu.commands;
 
+import ru.ncedu.menu.utils.MenuUtils;
 import ru.ncedu.menu.utils.exportutil.ExportController;
 import ru.ncedu.menu.utils.exportutil.ExportUtil;
-import ru.ncedu.menu.utils.MenuUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -48,7 +48,8 @@ public class ExportCommand implements Command {
                 return MainMenuCommand.getInstance();
             }
         }
-        File file = new File(path + "/" + fileName + ".xml");
+        File file = new File(path + "/" + fileName + ".xml"); // TODO: для разделителей следует использовать File.separator
+        // TODO: использование file.getParentFile().mkdirs() позволило бы создать недостающие директории, в текущем варианте мы словим исключение
         ExportUtil exportUtil = ExportController.getExportUtil();
 
         try {

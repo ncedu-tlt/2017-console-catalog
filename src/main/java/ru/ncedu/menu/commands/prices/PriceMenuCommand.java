@@ -52,7 +52,7 @@ public class PriceMenuCommand implements Command {
                     return this;
             }
         } catch (InputMismatchException e) {
-            System.out.println("Number is not correct, repeat yours entry");
+            System.out.println("Number is not correct, repeat your entry");
             return this;
         }
     }

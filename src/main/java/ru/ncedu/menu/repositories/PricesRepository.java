@@ -71,6 +71,7 @@ public class PricesRepository implements Repository<Price> {
         prices.remove(price);
     }
 
+    // TODO: перенесли ошибки из CharacteristicValueRepository
     public void remove(long marketId) {
         List<Price> priceToRemove = new ArrayList<>();
 

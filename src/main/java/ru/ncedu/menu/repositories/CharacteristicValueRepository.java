@@ -1,9 +1,6 @@
 package ru.ncedu.menu.repositories;
 
-import ru.ncedu.menu.models.Characteristic;
-import ru.ncedu.menu.models.CharacteristicGroup;
 import ru.ncedu.menu.models.CharacteristicValue;
-import ru.ncedu.menu.models.Product;
 import ru.ncedu.menu.utils.JSONUtils;
 
 import java.io.IOException;
@@ -49,6 +46,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
 //    }
 
     // TODO: id_product - название не соответствует Java Naming Conventions
+    // TODO: нужно возвращать список
     public CharacteristicValue get(long id_product){
         for(CharacteristicValue value : characteristicValues){
             if(value.getProductId() == id_product){
@@ -66,6 +64,8 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
         CharacteristicValue characteristicValue = new CharacteristicValue(object);
         characteristicValue.setProductId(characteristicValue.getProductId()); // TODO: если конструктор выше задает ProductId, то зачем это делать ещё раз?
         characteristicValue.setCharacteristicId(characteristicValue.getCharacteristicId());
+
+        // TODO: проверка на уникальность?
 
         characteristicValues.add(characteristicValue);
         return characteristicValue;
@@ -93,7 +93,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
     }
 
     public void remove(long characteristicId) {
-        List<CharacteristicValue> characteristicValuesToRemove = new ArrayList<>();
+        List<CharacteristicValue> characteristicValuesToRemove = new ArrayList<>(); // TODO: а не проще сразу удалять значения из текущего списка?
 
         if (characteristicId == 0) return; // TODO: а почему не может быть характиристики с id=0?
 
@@ -102,7 +102,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
                 characteristicValuesToRemove.add(characteristicValue);
             }
         }
-        characteristicValues.addAll(characteristicValuesToRemove);
+        characteristicValues.addAll(characteristicValuesToRemove); // TODO: так мы все-таки удаляем или как? :)
     }
 
     @Override

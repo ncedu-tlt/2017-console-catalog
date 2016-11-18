@@ -26,7 +26,7 @@ public class ImportCommand implements Command {
     @Override
     public Command execute() {
         String path;
-        ExportUtil importsCatalog;
+        ExportUtil importsCatalog; // TODO: какая-то беда с наименованиями
         boolean updateData = false;
 
         Scanner scanner = new Scanner(System.in);
@@ -63,6 +63,8 @@ public class ImportCommand implements Command {
             e.printStackTrace();
             return MainMenuCommand.getInstance();
         }
+
+        // TODO: сложно :) кроме шуток, можно упростить
         new CategoryImportUtil(importsCatalog.getCategoryExport().getCategories(), updateData).setInRepository();
         new CharacteristicGroupImportUtil(importsCatalog.getCharacteristicGroupExport().getCharacteristicGroups(), updateData).setInRepository();
         new CharacteristicImportUtil(importsCatalog.getCharacteristicExport().getCharacteristics(), updateData).setInRepository();

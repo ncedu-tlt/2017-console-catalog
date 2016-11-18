@@ -42,7 +42,7 @@ public class SelectPriceCommand implements Command {
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
         Scanner scanner = new Scanner(System.in);
-        String priceNum = scanner.nextLine();
+        String priceNum = scanner.nextLine(); // TODO: немного неочевидное поведение
         if (priceNum.trim().equals("0")) {
             return PriceMenuCommand.getInstance();
         }

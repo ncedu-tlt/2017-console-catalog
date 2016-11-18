@@ -43,6 +43,7 @@ public class SelectCharacteristicValueCommand implements Command{
             return CharacteristicValuesMenuCommand.getInstance();
         }
 
+        //TODO: неверная логика
         for(CharacteristicValue characteristicValue : characteristicValues){
             MenuUtils.printOption(String.valueOf(characteristicValue.getProductId()),
                     characteristicValue.getValue());

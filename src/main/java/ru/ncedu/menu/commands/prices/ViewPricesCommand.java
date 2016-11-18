@@ -55,7 +55,7 @@ public class ViewPricesCommand implements Command {
                     }
                 }
             }
-            if (iterationCount == 0) {
+            if (iterationCount == 0) { // TODO: а почему просто в начале не воспользоваться categories.isEmpty()?
                 MenuUtils.printSeparator();
                 System.out.println("No products in " + category.getName());
                 MenuUtils.printSeparator();

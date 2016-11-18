@@ -27,7 +27,7 @@ public class MenuUtils {
             printPrompt();
             number = Long.parseLong(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Number is not correct, repeat yours entry");
+            System.out.println("Number is not correct, repeat your entry");
             return getLong();
         }
 
@@ -37,7 +37,7 @@ public class MenuUtils {
     public static long getId() {
         long id = getLong();
         if (id <= 0) {
-            System.out.println("ID can't be negative, repeat yours entry");
+            System.out.println("ID can't be negative, repeat your entry");
             return getId();
         }
         return id;
