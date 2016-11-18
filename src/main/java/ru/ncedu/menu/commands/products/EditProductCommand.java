@@ -43,6 +43,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
 
         int fieldName = Integer.parseInt(scanner.nextLine());
         MenuUtils.printSeparator();
+        // TODO: действия лучше перенести в приватные методы - код получится более читаемый
         switch (fieldName) {
             case 0:
                 return ProductsMenuCommand.getInstance();
@@ -94,6 +95,7 @@ public class EditProductCommand extends ProductSelectionHandlerCommand {
 
             case 3:
                 System.out.println("Please enter new description");
+                // TODO: можно без инициализации null
                 String productDescription = null;
 
                 productDescription = scanner.nextLine();

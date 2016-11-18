@@ -45,6 +45,7 @@ public final class AddCharacteristicValueCommand implements Command {
         boolean isCorrectCharacteristicId;
         boolean isCorrectProductId;
 
+        // TODO: нужно уметь возвращать юзера после добавления других сущностей
         if(characteristics.isEmpty()){
             return AddCharacteristicCommand.getInstance();
         }
@@ -58,10 +59,12 @@ public final class AddCharacteristicValueCommand implements Command {
             isCorrectCharacteristicId= false;
             isCorrectProductId = false;
 
+            // TODO: для читаемости кода печать лучше вынести в приватный метод
             for(Product product : products){
                 System.out.println("Product: \n(" + product.getId() + ") - " + product.getName());
                 MenuUtils.printSeparator();
                 for(Characteristic characteristic : characteristics) {
+                    // TODO: есть удобный оператор ? : для таких действий
                     if(characteristic != null)
                         System.out.println("Characteristic: ("+characteristic.getId()+") - " + characteristic.getName());
                     else
@@ -71,6 +74,7 @@ public final class AddCharacteristicValueCommand implements Command {
             }
 
 
+            // TODO: дублирование кода
             System.out.println("Chose product id: ");
             MenuUtils.printPrompt();
             productId = Long.parseLong(scanner.nextLine());
@@ -130,6 +134,7 @@ public final class AddCharacteristicValueCommand implements Command {
             return true;
     }
             return false;
+        // TODO: можно проще return product.getId() == productId;
     }
 
     private boolean isCorrectCharacteristicId(Characteristic characteristic, long characteristicId){

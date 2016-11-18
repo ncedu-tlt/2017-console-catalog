@@ -59,6 +59,7 @@ public class AddPriceCommand implements Command {
 
     @Override
     public Command execute() {
+        // TODO: чтобы код был проще, можно декомпозировать метод на несколько
         Scanner scanner = new Scanner(System.in);
         MenuUtils.printSeparator();
 

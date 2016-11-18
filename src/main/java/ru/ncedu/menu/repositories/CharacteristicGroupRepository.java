@@ -31,7 +31,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
 
     @Override
     public List<CharacteristicGroup> get() {
-        sortById(characteristicGroups);
+        sortById(characteristicGroups); // TODO: ломает изначальный порядок в списке
         return characteristicGroups;
     }
 
@@ -106,6 +106,8 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         return ++id;
     }
 
+    // TODO: эти два метода нужно сделать приватными или вынести в util-класс, потому что они логически не относятся к CharacteristicGroupRepository
+
     public void sortById(List<CharacteristicGroup> groups) {
 
         Collections.sort(groups, new Comparator<CharacteristicGroup>() {
@@ -137,7 +139,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
     }
 
     public List<CharacteristicGroup> getOrdered() {
-        sortByOrderNumber(characteristicGroups);
+        sortByOrderNumber(characteristicGroups); // TODO: ломает изначальный порядок в списке
         return characteristicGroups;
     }
 

@@ -30,6 +30,7 @@ public class AddProductCommand implements Command {
     public Command execute() {
         List<Category> categories = CategoriesRepository.getInstance().get();
 
+        // TODO: переменные лучше объявлять как можно ближе к месту использования
         long categoryId;
         boolean idIsNotCorrect = true;
 

@@ -48,6 +48,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
 //        return null;
 //    }
 
+    // TODO: id_product - название не соответствует Java Naming Conventions
     public CharacteristicValue get(long id_product){
         for(CharacteristicValue value : characteristicValues){
             if(value.getProductId() == id_product){
@@ -63,7 +64,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
             return null;
 
         CharacteristicValue characteristicValue = new CharacteristicValue(object);
-        characteristicValue.setProductId(characteristicValue.getProductId());
+        characteristicValue.setProductId(characteristicValue.getProductId()); // TODO: если конструктор выше задает ProductId, то зачем это делать ещё раз?
         characteristicValue.setCharacteristicId(characteristicValue.getCharacteristicId());
 
         characteristicValues.add(characteristicValue);
@@ -94,7 +95,7 @@ public class CharacteristicValueRepository implements Repository<CharacteristicV
     public void remove(long characteristicId) {
         List<CharacteristicValue> characteristicValuesToRemove = new ArrayList<>();
 
-        if (characteristicId == 0) return;
+        if (characteristicId == 0) return; // TODO: а почему не может быть характиристики с id=0?
 
         for (CharacteristicValue characteristicValue: characteristicValues) {
             if (characteristicValue.getCharacteristicId() == characteristicId) {

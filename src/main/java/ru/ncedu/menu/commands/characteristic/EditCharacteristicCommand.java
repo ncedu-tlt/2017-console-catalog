@@ -47,6 +47,7 @@ public class EditCharacteristicCommand extends CharacteristicSelectionHandlerCom
         int entered = Integer.parseInt(scanner.nextLine());
         MenuUtils.printSeparator();
 
+        // TODO: действия лучше перенести в приватные методы - код получится более читаемый
         switch (entered){
             case 0:
                 return CharacteristicMenuCommand.getInstance();

@@ -48,6 +48,7 @@ public class SelectCharacteristicCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         String characteristicId = scanner.next();
 
+        // TODO: почему характеристика не может иметь id=0
         if (characteristicId.equals("0")) return CharacteristicMenuCommand.getInstance();
 
         try {

@@ -85,6 +85,7 @@ public class SearchProductCommand implements Command {
 
         List<Product> searchResult = new ArrayList<>();
         Pattern pattern = Pattern.compile(".*" + productName + ".*");
+        // TODO: можно было инициализировать в цикле
         Matcher matcher;
 
         for (Product product : products) {

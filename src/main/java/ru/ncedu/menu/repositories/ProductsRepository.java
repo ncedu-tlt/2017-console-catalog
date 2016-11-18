@@ -52,7 +52,7 @@ public class ProductsRepository implements Repository<Product> {
     /*
      *  Выбор продуктов по отдельной категории. Временый коструктор.
      */
-    public List<Product> get(long categoryId, String category) {
+    public List<Product> get(long categoryId, String category) { // TODO: зачем параметр category?
 
         List<Product> productsInCategory = new ArrayList<>();
 

@@ -19,6 +19,8 @@ public class EditOrderNumberCommand extends CharacteristicGroupSelectionHandlerC
     @Override
     public Command execute() {
 
+        // TODO: можно было реализовать в одной команде с редактированием имени
+
         Scanner scanner = new Scanner(System.in);
 
         MenuUtils.printSeparator();

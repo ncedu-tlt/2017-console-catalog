@@ -19,6 +19,7 @@ public class EditPriceCommand extends PriceSelectionHandlerCommand {
 
         MenuUtils.printSeparator();
 
+        // TODO: не нужно оставлять закомменченный код - всё это хранит система контроля версий
         /*System.out.println("Enter new value for market ID");
         long newMarketId = MenuUtils.getId();
         price.setMarketId(newMarketId);

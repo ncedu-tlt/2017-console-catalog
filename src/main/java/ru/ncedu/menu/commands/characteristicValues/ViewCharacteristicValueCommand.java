@@ -44,6 +44,7 @@ public final class ViewCharacteristicValueCommand implements Command{
         for(String productName : productNames) {
 
             for(CharacteristicValue characteristicValue : characteristicValues){
+                    // для String кроме проверки на null нужно ещё проверять на непустую строку
                     if (productName != null) {
                         MenuUtils.printOption(productName,
                                 String.valueOf(characteristicValue.getValue()));

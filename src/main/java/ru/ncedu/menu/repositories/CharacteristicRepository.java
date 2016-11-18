@@ -49,6 +49,7 @@ public class CharacteristicRepository implements Repository<Characteristic> {
         return characteristic;
     }
 
+    // TODO: удалять и заново добавлять - не очень хороший подход, лучше доставать объект и сеттить в него параметры
     @Override
     public Characteristic update(Characteristic object) {
         if (object == null) return null;

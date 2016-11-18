@@ -13,6 +13,7 @@ public final class CharacteristicValuesMenuCommand implements Command{
 
     private static CharacteristicValuesMenuCommand instance;
 
+    // TODO: неприватный конструктор
     CharacteristicValuesMenuCommand(){}
 
     public static synchronized CharacteristicValuesMenuCommand getInstance(){

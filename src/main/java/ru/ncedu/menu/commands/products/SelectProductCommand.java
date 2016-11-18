@@ -58,6 +58,7 @@ public class SelectProductCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         String productId = scanner.nextLine();
 
+        // TODO: лучше сначала привести к Long, а затем сравнивать
         if (productId.trim().equals("0")) {
             return ProductsMenuCommand.getInstance();
         }

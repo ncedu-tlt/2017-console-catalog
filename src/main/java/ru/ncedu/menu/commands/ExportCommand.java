@@ -25,6 +25,7 @@ public class ExportCommand implements Command {
 
     @Override
     public Command execute() {
+        // TODO: объявлять можно при инициализации
         String path;
         String fileName;
         Scanner scanner = new Scanner(System.in);

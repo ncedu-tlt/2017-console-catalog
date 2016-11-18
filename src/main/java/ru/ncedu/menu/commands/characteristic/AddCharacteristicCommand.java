@@ -38,6 +38,7 @@ public class AddCharacteristicCommand implements Command {
 
         Scanner scanner = new Scanner(System.in);
 
+        // TODO: здесь нужно команды делать контекстно-завсимыми, чтобы после создания вернуть пользователя обратно
         if (categories.isEmpty()) {
             System.out.println("Category doesn't exist. " +
                     "Please create new category before creating characteristic.");
