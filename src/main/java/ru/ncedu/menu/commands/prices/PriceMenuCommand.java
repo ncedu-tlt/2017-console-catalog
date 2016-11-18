@@ -4,6 +4,7 @@ import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.MainMenuCommand;
 import ru.ncedu.menu.utils.MenuUtils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PriceMenuCommand implements Command {
@@ -31,23 +32,28 @@ public class PriceMenuCommand implements Command {
         MenuUtils.printSeparator();
         MenuUtils.printPrompt();
 
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        try {
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 0:
-                return MainMenuCommand.getInstance();
-            case 1:
-                return AddPriceCommand.getInstance();
-            case 2:
-                return ViewPricesCommand.getInstance();
-            case 3:
-                return new SelectPriceCommand(new EditPriceCommand());
-            case 4:
-                return new SelectPriceCommand(new DeletePriceCommand());
-            default:
-                System.out.println("Unexpected command!");
-                return this;
+            switch (choice) {
+                case 0:
+                    return MainMenuCommand.getInstance();
+                case 1:
+                    return AddPriceCommand.getInstance();
+                case 2:
+                    return ViewPricesCommand.getInstance();
+                case 3:
+                    return new SelectPriceCommand(new EditPriceCommand());
+                case 4:
+                    return new SelectPriceCommand(new DeletePriceCommand());
+                default:
+                    System.out.println("Unexpected command!");
+                    return this;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Number is not correct, repeat yours entry");
+            return this;
         }
     }
 }
