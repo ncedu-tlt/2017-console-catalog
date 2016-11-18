@@ -1,4 +1,4 @@
-package ru.ncedu.menu.utils.ExportUtil.ExportModel;
+package ru.ncedu.menu.utils.exportutil.exportmodel;
 
 import ru.ncedu.menu.models.Category;
 

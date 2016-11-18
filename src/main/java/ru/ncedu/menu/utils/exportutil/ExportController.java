@@ -1,8 +1,8 @@
-package ru.ncedu.menu.utils.ExportUtil;
+package ru.ncedu.menu.utils.exportutil;
 
 
 import ru.ncedu.menu.repositories.*;
-import ru.ncedu.menu.utils.ExportUtil.ExportModel.*;
+import ru.ncedu.menu.utils.exportutil.exportmodel.*;
 
 public class ExportController {
     private ExportController() {

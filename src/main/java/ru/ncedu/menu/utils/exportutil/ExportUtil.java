@@ -1,12 +1,11 @@
-package ru.ncedu.menu.utils.ExportUtil;
+package ru.ncedu.menu.utils.exportutil;
 
-import ru.ncedu.menu.models.Characteristic;
-import ru.ncedu.menu.utils.ExportUtil.ExportModel.*;
+import ru.ncedu.menu.utils.exportutil.exportmodel.*;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "ExportCatalog")
+@XmlRootElement(name = "data")
 public class ExportUtil {
     private ProductExport productExport;
     private CategoryExport categoryExport;

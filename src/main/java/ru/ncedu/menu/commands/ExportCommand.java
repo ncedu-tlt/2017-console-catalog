@@ -1,7 +1,7 @@
 package ru.ncedu.menu.commands;
 
-import ru.ncedu.menu.utils.ExportUtil.ExportController;
-import ru.ncedu.menu.utils.ExportUtil.ExportUtil;
+import ru.ncedu.menu.utils.exportutil.ExportController;
+import ru.ncedu.menu.utils.exportutil.ExportUtil;
 import ru.ncedu.menu.utils.MenuUtils;
 
 import javax.xml.bind.JAXBContext;
@@ -36,9 +36,7 @@ public class ExportCommand implements Command {
 
 
         if (path.isEmpty()) {
-            System.out.println("Entered path is not correct. " +
-                    "Using DEFAULT path? " +
-                    "DEFAULT file path for EXPORT XML: C:\\market.xml");
+            System.out.println("Entered path is not correct. ");
             System.out.println("Press E for Exit, and any key for continue");
             if (scanner.nextLine().equalsIgnoreCase("e")) {
                 return MainMenuCommand.getInstance();
