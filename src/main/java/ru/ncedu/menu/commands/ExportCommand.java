@@ -37,12 +37,12 @@ public class ExportCommand implements Command {
         path = scanner.nextLine();
 
         MenuUtils.printCategorySeparator();
-        System.out.println("Please Enter file Name.(Not using .XML)");
+        System.out.println("Please Enter file name.(Not using .XML)");
         MenuUtils.printPrompt();
         fileName = scanner.nextLine();
 
         if (path.isEmpty() || fileName.isEmpty()) {
-            System.out.println("Entered path or file name is not correct. ");
+            System.out.println("Entered path or file name is incorrect. ");
             System.out.println("Press E for Exit, and any key for continue");
             if (scanner.nextLine().equalsIgnoreCase("e")) {
                 return MainMenuCommand.getInstance();
