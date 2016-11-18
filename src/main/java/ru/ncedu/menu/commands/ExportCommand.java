@@ -26,24 +26,28 @@ public class ExportCommand implements Command {
     @Override
     public Command execute() {
         String path;
+        String fileName;
         Scanner scanner = new Scanner(System.in);
 
 
         MenuUtils.printCategorySeparator();
-        System.out.println("Please Enter file Name.(Not using .XML)");
+        System.out.println("Please Enter path(where do we must save?)");
         MenuUtils.printPrompt();
         path = scanner.nextLine();
 
+        MenuUtils.printCategorySeparator();
+        System.out.println("Please Enter file Name.(Not using .XML)");
+        MenuUtils.printPrompt();
+        fileName = scanner.nextLine();
 
-        if (path.isEmpty()) {
-            System.out.println("Entered path is not correct. ");
+        if (path.isEmpty() || fileName.isEmpty()) {
+            System.out.println("Entered path or file name is not correct. ");
             System.out.println("Press E for Exit, and any key for continue");
             if (scanner.nextLine().equalsIgnoreCase("e")) {
                 return MainMenuCommand.getInstance();
             }
         }
-        File file = new File("out/" + path + ".xml");
-
+        File file = new File(path + "/" + fileName + ".xml");
         ExportUtil exportUtil = ExportController.getExportUtil();
 
         try {
