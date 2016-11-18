@@ -31,7 +31,7 @@ public class ExportCommand implements Command {
 
         MenuUtils.printCategorySeparator();
         System.out.println("Please Enter file Name.(Not using .XML)");
-
+        MenuUtils.printPrompt();
         path = scanner.nextLine();
 
 

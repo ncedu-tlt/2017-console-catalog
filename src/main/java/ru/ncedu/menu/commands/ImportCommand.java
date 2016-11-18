@@ -34,7 +34,7 @@ public class ImportCommand implements Command {
 
         MenuUtils.printCategorySeparator();
         System.out.println("Please Enter path for import file.");
-
+        MenuUtils.printPrompt();
         path = scanner.nextLine();
 
         if (path.isEmpty()) {
@@ -45,6 +45,7 @@ public class ImportCommand implements Command {
         System.out.println("Update Data from XML file? Press Y form update objects in repository, " +
                 "and any key for Import without updating.");
 
+        MenuUtils.printPrompt();
         if (scanner.nextLine().equalsIgnoreCase("y")) {
             updateData = true;
         }
