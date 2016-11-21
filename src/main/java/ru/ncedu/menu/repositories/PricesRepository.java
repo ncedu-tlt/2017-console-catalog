@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
 public class PricesRepository implements Repository<Price> {
 
     private static final String FILE_NAME = "prices.json";
