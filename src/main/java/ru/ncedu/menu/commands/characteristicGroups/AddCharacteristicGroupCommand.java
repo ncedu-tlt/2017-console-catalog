@@ -12,14 +12,22 @@ import java.util.Scanner;
 public class AddCharacteristicGroupCommand implements Command {
 
     private static AddCharacteristicGroupCommand instance;
+    private static Command nextCommand;
 
-    private AddCharacteristicGroupCommand() {}
+    private AddCharacteristicGroupCommand() {
+        nextCommand = AddCharacteristicGroupCommand.getInstance();
+    }
 
     public static synchronized AddCharacteristicGroupCommand getInstance() {
         if (instance == null) {
             instance = new AddCharacteristicGroupCommand();
         }
         return instance;
+    }
+
+
+    public void setNextCommand(Command nextCommand) {
+        this.nextCommand = nextCommand;
     }
 
     public Command execute() {
@@ -48,7 +56,7 @@ public class AddCharacteristicGroupCommand implements Command {
         MenuUtils.printSeparator();
         System.out.println("Characteristic group '" + characteristicGroupName + "' has been created");
         
-        return MainMenuCommand.getInstance();
+        return nextCommand.execute();
     }
 
     /**

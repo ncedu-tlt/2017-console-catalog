@@ -106,9 +106,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         return ++id;
     }
 
-    // TODO: эти два метода нужно сделать приватными или вынести в util-класс, потому что они логически не относятся к CharacteristicGroupRepository
-
-    public void sortById(List<CharacteristicGroup> groups) {
+    private void sortById(List<CharacteristicGroup> groups) {
 
         Collections.sort(groups, new Comparator<CharacteristicGroup>() {
             public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
@@ -123,7 +121,7 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
         });
     }
 
-    public void sortByOrderNumber(List<CharacteristicGroup> groups) {
+    private void sortByOrderNumber(List<CharacteristicGroup> groups) {
 
         Collections.sort(groups, new Comparator<CharacteristicGroup>() {
             public int compare(CharacteristicGroup obj1, CharacteristicGroup obj2) {
@@ -139,7 +137,6 @@ public class CharacteristicGroupRepository implements Repository<CharacteristicG
     }
 
     public List<CharacteristicGroup> getOrdered() {
-        sortByOrderNumber(characteristicGroups); // TODO: ломает изначальный порядок в списке
         return characteristicGroups;
     }
 

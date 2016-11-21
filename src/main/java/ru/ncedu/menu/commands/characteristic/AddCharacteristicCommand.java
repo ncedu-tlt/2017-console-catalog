@@ -5,6 +5,7 @@ import ru.ncedu.menu.commands.Command;
 import ru.ncedu.menu.commands.MainMenuCommand;
 import ru.ncedu.menu.commands.categories.AddCategoryCommand;
 import ru.ncedu.menu.commands.characteristicGroups.AddCharacteristicGroupCommand;
+import ru.ncedu.menu.commands.characteristicGroups.CharacteristicGroupMenuCommand;
 import ru.ncedu.menu.models.Category;
 import ru.ncedu.menu.models.Characteristic;
 import ru.ncedu.menu.models.CharacteristicGroup;
@@ -12,13 +13,15 @@ import ru.ncedu.menu.repositories.CategoriesRepository;
 import ru.ncedu.menu.repositories.CharacteristicGroupRepository;
 import ru.ncedu.menu.repositories.CharacteristicRepository;
 import ru.ncedu.menu.utils.MenuUtils;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class AddCharacteristicCommand implements Command {
     private static AddCharacteristicCommand instance;
 
-    private AddCharacteristicCommand() {}
+    private AddCharacteristicCommand() {
+    }
 
     public static synchronized AddCharacteristicCommand getInstance() {
         if (instance == null) {
@@ -47,8 +50,13 @@ public class AddCharacteristicCommand implements Command {
         if (groups.isEmpty()) {
             System.out.println("Characteristic group doesn't exist. " +
                     "Please create new characteristic group before creating characteristic.");
+            //Устанавливаем AddCharacteristicCommand как следующую команду после AddCharacteristicGroupCommand
+            AddCharacteristicGroupCommand.getInstance().setNextCommand(this);
             return AddCharacteristicGroupCommand.getInstance();
         }
+        //Возвращаем значение следующей команды на AddCharacteristicGroupCommand
+        AddCharacteristicGroupCommand.getInstance().setNextCommand(CharacteristicGroupMenuCommand.getInstance());
+
         MenuUtils.printSeparator();
 
         System.out.println("Choose category ID for new characteristic:");
@@ -64,8 +72,7 @@ public class AddCharacteristicCommand implements Command {
 
                 if (isCategoryIdCorrect(categoryId, categories)) isIdCategoryNotCorrect = false;
                 else System.out.println("Entered category ID doen't exist, please enter correct id:");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Category ID must be a number.");
                 return CharacteristicMenuCommand.getInstance();
             }
@@ -85,8 +92,7 @@ public class AddCharacteristicCommand implements Command {
 
                 if (isGroupIdCorrect(groupId, groups)) isIdGroupNotCorrect = false;
                 else System.out.println("Entered characteristic group ID doen't exist, please enter correct id:");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Characteristic group ID must be a number.");
                 return CharacteristicMenuCommand.getInstance();
             }
@@ -114,6 +120,7 @@ public class AddCharacteristicCommand implements Command {
 
     /**
      * Check characteristic group ID exists
+     *
      * @return boolean
      */
     private boolean isGroupIdCorrect(long groupID, List<CharacteristicGroup> groups) {
@@ -128,6 +135,7 @@ public class AddCharacteristicCommand implements Command {
 
     /**
      * Check category ID exists
+     *
      * @return boolean
      */
     private boolean isCategoryIdCorrect(long groupID, List<Category> categories) {
@@ -142,6 +150,7 @@ public class AddCharacteristicCommand implements Command {
 
     /**
      * Validates category name and returns a message if error was found
+     *
      * @return Error message
      */
     private String validate(String name) {
